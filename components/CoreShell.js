@@ -3,11 +3,19 @@ import Navigation from "@/components/Navigation"
 
 const CoreShell = ({ children, ...rest }) => {
     return (
-      <Box minH="100vh" bg="gray.100">
+      <Box bg="gray.100">
         <Navigation />
-        <Flex margin="0 auto" direction="column" maxW="1250px" px={8} {...rest}>
-          {children}
-        </Flex>
+        <Box minH="100vh" maxW="1250px" margin="0 auto">
+          <Flex
+            margin="0 auto"
+            direction="column"
+            maxW="1250px"
+            px={8}
+            {...rest}
+          >
+            {children}
+          </Flex>
+        </Box>
       </Box>
     );
 }
