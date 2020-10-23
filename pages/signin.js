@@ -6,14 +6,11 @@ import {
   Box,
   Button,
   Flex,
-  Heading,
   Link,
-  InputGroup,
   Input,
   FormControl,
   FormLabel,
   FormErrorMessage,
-  FormHelperText,
   Stack,
   Icon,
   useToast
@@ -30,7 +27,6 @@ const Signin = () => {
   const { login } = useAuth();
 
   const onLogin = (creds) => {
-    console.log(creds)
     setLoading(true)
     login(creds).catch((error) => {
       setLoading(false);
@@ -65,7 +61,7 @@ const Signin = () => {
           </Box>
         </Flex>
         <FormControl isInvalid={errors.username && errors.username.message}>
-          <FormLabel>Email Address</FormLabel>
+          <FormLabel>Username</FormLabel>
           <Input
             autoFocus
             aria-label="username"
@@ -114,39 +110,11 @@ const Signin = () => {
           Login
         </Button>
       </Stack>
+      <NextLink href="/signup">
+        <Link mt={10}>Don't have an account? Sign up here</Link>
+      </NextLink>
     </CoreShell>
   );
-
-
-  // return (
-  //   <CoreShell h="60vh" alignItems="center" justifyContent="center">
-  //     <Box bg="white" p={10} w="50%">
-  //       <Heading mb={5} fontSize="2xl">Welcome back!</Heading>
-  //       <Box w="full" as="form">
-  //         <FormControl mb={3}>
-  //           <FormLabel htmlFor="email">Email address</FormLabel>
-  //           <Input
-  //             type="email"
-  //             id="email"
-  //             aria-describedby="email-helper-text"
-  //           />
-  //           <FormHelperText id="email-helper-text">
-  //             We'll never share your email.
-  //           </FormHelperText>
-  //         </FormControl>
-  //         <InputGroup>
-  //           <Input placeholder="helo" />
-  //         </InputGroup>
-  //         <Button mt={4}>Log in</Button>
-  //       </Box>
-  //       <Box mt={3}>
-  //         <NextLink href="/signup" passHref>
-  //           <Link fontSize="xs">Don't have an account? Sign up here</Link>
-  //         </NextLink>
-  //       </Box>
-  //     </Box>
-  //   </CoreShell>
-  // );
 };
 
 export default Signin;

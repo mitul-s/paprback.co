@@ -16,7 +16,7 @@ const BookCard = ({ id, portrait, title, subtitle, authors = [], ratings, img, .
             display="flex"
             alignItems="center"
             justifyContent="center"
-            minHeight={{ md: 200 }}
+            minHeight={{ base: 250, md: 200 }}
             shadow="sm"
           >
             <Image
@@ -30,7 +30,7 @@ const BookCard = ({ id, portrait, title, subtitle, authors = [], ratings, img, .
             />
           </Box>
           <Box
-            mt={{ base: !portrait ? 2 : '', md: !portrait ? 0 : 4 }}
+            mt={{ base: !portrait ? 2 : '', md: portrait ? 0 : 0 }}
             ml={{ md: !portrait ? 6 : '' }}
             display="flex"
             justifyContent="center"
@@ -44,7 +44,7 @@ const BookCard = ({ id, portrait, title, subtitle, authors = [], ratings, img, .
                 fontSize="xl"
                 lineHeight="normal"
                 fontWeight="bold"
-                mt={{ md: 3 }}
+                mt={{ md: portrait ? 0 : 3 }}
               >
                 {title}
                 {subtitle ? `: ${subtitle}` : ''}
@@ -56,7 +56,7 @@ const BookCard = ({ id, portrait, title, subtitle, authors = [], ratings, img, .
                 <span key={i}>{(i ? ', ' : '') + a}</span>
               ))}
             </Text>
-            <Text
+            {/* <Text
               mt={2}
               color="gray.500"
               fontSize="sm"
@@ -77,7 +77,7 @@ const BookCard = ({ id, portrait, title, subtitle, authors = [], ratings, img, .
               {ratings.count > 0
                 ? `${ratings.avg} (${ratings.count} Ratings)`
                 : 'No ratings'}
-            </Text>
+            </Text> */}
           </Box>
         </Box>
       </>

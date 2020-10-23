@@ -1,33 +1,50 @@
 import React from "react";
 import NextLink from "next/link";
-import { Flex, Link, Avatar, Icon, Button } from "@chakra-ui/core";
+import { Flex, Link, Avatar, Icon, Button, Menu, MenuList, MenuItem, MenuButton } from "@chakra-ui/core";
 import SearchBar from "@/components/SearchBar";
 
 import { useAuth } from '@/lib/auth';
 
+const AuthMenu = ({ user, logout }) => {
+  return (
+    <Menu placement="bottom-start">
+      <MenuButton
+        as={Button}
+        rightIcon={
+          <Icon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M12 15l-4.243-4.243 1.415-1.414L12 12.172l2.828-2.829 1.415 1.414z" />
+            </svg>
+          </Icon>
+        }
+      >
+        {user.username}
+      </MenuButton>
+      <MenuList>
+        <NextLink href={`/user/${user.username}`} passHref>
+          <MenuItem>Profile</MenuItem>
+        </NextLink>
+        <NextLink href={`/user/${user.username}/settings`}>
+          <MenuItem>Settings</MenuItem>
+        </NextLink>
+        <MenuItem as="a" onClick={() => logout()}>
+          Log out
+        </MenuItem>
+      </MenuList>
+    </Menu>
+  );
+} 
+
 
 const AuthNav = ({ user, logout }) => (
   <>
-    <NextLink href={`/user/${user.username}`} passHref>
-      <Flex alignItems="center">
-        <Avatar size="sm" mr={2} />
-        <Link>{user.username}</Link>
-        <Icon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-          >
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M12 15l-4.243-4.243 1.415-1.414L12 12.172l2.828-2.829 1.415 1.414z" />
-          </svg>
-        </Icon>
-      </Flex>
-    </NextLink>
-    <Button onClick={() => logout()} ml={4}>
-      Log out
-    </Button>
+    <AuthMenu user={user} logout={logout} />
   </>
 );
 
@@ -38,7 +55,7 @@ const GuestNav = (
                 Sign In
             </Button>
         </NextLink>
-        <NextLink href="/account" passHref>
+        <NextLink href="/signup" passHref>
             <Button>
                 Sign Up
             </Button>
