@@ -8,8 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/core": "^1.0.0-rc.5",
+    "axios": "^0.20.0",
+    "js-cookie": "^2.2.1",
     "next": "9.5.5",
     "react": "17.0.0",
-    "react-dom": "17.0.0"
+    "react-dom": "17.0.0",
+    "react-hook-form": "^6.9.5",
+    "swr": "^0.3.6"
   }
 }
