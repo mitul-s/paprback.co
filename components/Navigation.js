@@ -8,8 +8,7 @@ import { useAuth } from '@/lib/auth';
 
 const AuthNav = ({ user, logout }) => (
   <>
-    <Button onClick={() => logout()}>Log out</Button>
-    <NextLink href={`/@${user.username}`} passHref>
+    <NextLink href={`/user/${user.username}`} passHref>
       <Flex alignItems="center">
         <Avatar size="sm" mr={2} />
         <Link>{user.username}</Link>
@@ -26,6 +25,9 @@ const AuthNav = ({ user, logout }) => (
         </Icon>
       </Flex>
     </NextLink>
+    <Button onClick={() => logout()} ml={4}>
+      Log out
+    </Button>
   </>
 );
 

@@ -1,5 +1,5 @@
 import { Box, Flex } from "@chakra-ui/core"
-import Navigation from "@/components/navigation"
+import Navigation from "@/components/Navigation"
 
 const CoreShell = ({ children, ...rest }) => {
     return (

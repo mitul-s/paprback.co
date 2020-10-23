@@ -6,11 +6,13 @@ import { apifetch } from '@/utils/fetch';
 import CoreShell from '@/components/CoreShell';
 import { useAuth } from '@/lib/auth';
 
+
 const User = () => {
     const { user } = useAuth();
     const router = useRouter();
-    const { uid } = router.query;
-    const { data } = useSWR(`${apifetch}/${user.uid}/profile`, fetcher)
+    const { username } = router.query;
+    const { data: id } = useSWR(username ?`${apifetch}/user/${username}` : null, fetcher)
+    const { data } = useSWR(id ? `${apifetch}/${id.user_id}/profile` : null, fetcher)
 
     if(!data) {
       <CoreShell>
@@ -26,8 +28,6 @@ const User = () => {
         bio: data.bio,
       }
     }
-    console.log(uid);
-    console.log(data);
 
     return (
       <>
@@ -51,7 +51,7 @@ const User = () => {
               </Box>
                 <Heading fontSize="lg">{u.firstName} {u.lastName}</Heading>
                 <Heading fontSize="md" fontWeight="normal">
-                  {uid}
+                  {username}
                 </Heading>
                 <Text>{u.bio}</Text>
             </Box>
@@ -60,6 +60,10 @@ const User = () => {
       </>
     );
 }
+
+
+
+
 
 
 export default User;
