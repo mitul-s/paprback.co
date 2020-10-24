@@ -28,7 +28,7 @@ const DescriptionText = ({ desc }) => {
     return (
       <>
         <Collapse
-          startingHeight={200}
+          startingHeight={100}
           isOpen={show}
           dangerouslySetInnerHTML={{ __html: desc }}
         />
@@ -64,7 +64,7 @@ const Description = ({ title, subtitle, authors = [], desc, detail = {} }) => (
         </Box>
       </Stack>
       <Box bg="white" p={5}>
-        {desc ? <DescriptionText desc={desc} /> : <Box h={200}>No description available</Box>}
+        {desc ? <DescriptionText desc={desc} /> : <Box h={50}>No description available</Box>}
         <Box>
         <Divider mt={4}/>
         <Heading fontSize="md" my={3}>Details</Heading>

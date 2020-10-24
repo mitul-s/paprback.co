@@ -1,6 +1,6 @@
-import { Box, Heading, Text, Link, SimpleGrid } from "@chakra-ui/core"
+import { Box, Text, Heading, Link, SimpleGrid, Spinner, Skeleton } from "@chakra-ui/core"
 import BookCard from "../BookCard"
-import FullSpinner from "@/components/FullSpinner"
+import { AuthHeader } from "./Header";
 
 import useUser from "@/utils/hooks/useUser"
 import { useRouter } from 'next/router';
@@ -14,26 +14,20 @@ const Dashboard = ({ user }) => {
   const { data: shelves } = useSWR(data ? `${apifetch}/${user.uid}/shelves` : null, fetcher)
   
   if (isLoading) {
-    return <FullSpinner />;
+    return (
+      <Box display="flex" alignItems="center" justifyContent="center" h="30vh">
+        <Spinner />
+      </Box>
+    );
   }
 
   if (isError) {
     return <h1>There was an error {isError.message}</h1>;
   }
-  
-  if(!data) {
-    return "Loading.."
-  }
-  
-  let u = {};
-  let s = {};
-  if (data && shelves) {
-    u = {
-      firstName: data.first_name,
-      lastName: data.last_name,
-      bio: data.bio
-    };
 
+
+  let s = {};
+  if (shelves) {
     s = {
       cr: shelves.currently_reading,
       rl: shelves.want_to_read,
@@ -41,25 +35,20 @@ const Dashboard = ({ user }) => {
     };
   }
 
-
-    return data && shelves ? (
+    return (
       <Box>
-        <Box mb={8}>
-          <Heading mb={3}>Welcome Back, {data.first_name} 👋</Heading>
-          <Text>Here's what you need to know.</Text>
-        </Box>
+      <AuthHeader name={data.first_name} />
         <Box display={{ md: 'flex' }}>
           <Box w={{ md: 'lg' }} mr={{ md: 4 }} mb={{ base: 4 }}>
             <Heading fontSize="2xl" mb={3}>
               Currently
             </Heading>
             <>
-              <BookCard
-                portrait={true}
-                id={s.cr[0].id}
-                title={s.cr[0].volumeInfo.title}
-                img={s.cr[0].volumeInfo.imageLinks.thumbnail}
-              />
+              {shelves ? (
+                <BookCard portrait={true} book={s.cr[0]} />
+              ) : (
+                <Skeleton h="10vh" />
+              )}
             </>
           </Box>
           <Box w="full">
@@ -74,19 +63,17 @@ const Dashboard = ({ user }) => {
             </Box>
             <Box>
               <SimpleGrid columns={2} spacing={4}>
-                <Box bg="white" p={4}>
+                {shelves ? (<><Box bg="white" p={4}>
                   Book 1
                 </Box>
                 <Box bg="white" p={4}>
                   Book 2
-                </Box>
+                </Box></>) : (<><Skeleton h="10vh"/><Skeleton h="10vh"/></>)}
               </SimpleGrid>
             </Box>
           </Box>
         </Box>
       </Box>
-    ) : (
-      'Loading'
     );
 }
 

@@ -7,9 +7,13 @@ import Head from 'next/head';
 
 import { useAuth } from "@/lib/auth";
 import { useRouter } from "next/router"
-import useSWR from 'swr';
-import fetcher from '@/utils/fetcher';
+import useUser from "@/utils/hooks/useUser";
+// import useSWR from 'swr';
+// import fetcher from '@/utils/fetcher';
 import { apifetch, apipost } from '@/utils/fetch';
+
+
+
 import {
   Box,
   Heading,
@@ -32,23 +36,27 @@ const Settings = () => {
 
     const { user } = useAuth();
     const router = useRouter();
-    const { username } = router.query;
-    const { data: id, error } = useSWR(username ? `${apifetch}/user/${username}` : null, fetcher)
-    const { data } = useSWR(() => `${apifetch}/${id.user_id}/profile`, fetcher)
+    // const { username } = router.query;
+    // const { data: id, error } = useSWR(username ? `${apifetch}/user/${username}` : null, fetcher)
+    // const { data } = useSWR(() => `${apifetch}/${id.user_id}/profile`, fetcher)
+    const { user: data, isLoading, isError, mutate } = useUser(user);
     const { handleSubmit, register, errors } = useForm();
     const [ loading, setLoading ] = useState(false);
 
     const toast = useToast();
 
-    if(!data) {
+    if(isLoading) {
         return <FullSpinner />
     }
+    
+    if(isError) {
+      return <h1>There was an error {error.message}</h1>
+    }
 
-    const onSubmit = async (data) => {
-        console.log(data);
+    const onSubmit = async (creds) => {;
         setLoading(true);
         return apipost
-          .patch(`/${id.user_id}/profile`, data, {
+          .patch(`/${user.uid}/profile`, creds, {
               headers: {
                   Authorization: `Bearer ${user.token}`
               }

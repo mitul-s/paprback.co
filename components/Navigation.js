@@ -83,14 +83,14 @@ const Navigation = () => {
           h="12vh"
           //   border="1px solid red"
         >
-          <Flex align="center">
+          <Flex align="center" display={{ base: 'none', md: 'flex' }}>
             <NextLink href="/" passHref>
               <Link mr={2} fontWeight="bold" fontSize="xl">
                 Paprback
               </Link>
             </NextLink>
           </Flex>
-          <Flex justifyContent="center" alignItems="center" w="5xl" mx={10}>
+          <Flex justifyContent="center" alignItems="center" w="5xl" mx={{ base: '0', md: 10 }}>
             <SearchBar/>
           </Flex>
           <Flex justifyContent="center" alignItems="center">

@@ -1,10 +1,25 @@
 import { Box, Image, Link, Text, Icon } from "@chakra-ui/core"
 import NextLink from "next/link"
 
-const BookCard = ({ id, portrait, title, subtitle, authors = [], ratings, img, ...rest }) => {
+const BookCard = ({ book, portrait, ...rest }) => {
 
     const colors = ['red.100', 'orange.100', 'green.100', 'teal.100', 'blue.100', 'purple.100', 'pink.100']
     const color = colors[Math.floor(Math.random() * colors.length)];
+
+
+    const b = {
+      id: book.id,
+      title: book.volumeInfo.title,
+      subtitle: book.volumeInfo.subtitle,
+      authors: book.volumeInfo.authors,
+      ratings: {
+        count: book.volumeInfo.ratingsCount,
+        avg: book.volumeInfo.averageRating
+      },
+      img: book.volumeInfo.imageLinks
+        ? book.volumeInfo.imageLinks.thumbnail
+        : ''
+    };
 
     return (
       <>
@@ -24,7 +39,7 @@ const BookCard = ({ id, portrait, title, subtitle, authors = [], ratings, img, .
               width={{ md: portrait ? '' : 40 }}
               height={{ md: 175 }}
               objectFit="contain"
-              src={img}
+              src={b.img}
               alt="Woman paying for a purchase"
               fallbackSrc="https://via.placeholder.com/175x200"
             />
@@ -38,7 +53,7 @@ const BookCard = ({ id, portrait, title, subtitle, authors = [], ratings, img, .
             p={4}
           >
             {/* <NextLink href={`/book/${id}-${title.replace(/ /g, "-").replace(/[!,.:]/g, "")}`}> */}
-            <NextLink href={`/book/${id}`} passHref>
+            <NextLink href={`/book/${b.id}`} passHref>
               <Link
                 display="block"
                 fontSize="xl"
@@ -46,13 +61,13 @@ const BookCard = ({ id, portrait, title, subtitle, authors = [], ratings, img, .
                 fontWeight="bold"
                 mt={{ md: portrait ? 0 : 3 }}
               >
-                {title}
-                {portrait ? '' : subtitle ? `: ${subtitle}` : ''}
+                {b.title}
+                {portrait ? '' : b.subtitle ? `: ${b.subtitle}` : ''}
               </Link>
             </NextLink>
             <Text mt={1} color="gray.600" fontSize="md">
-              {authors.length ? 'by' : ''}{' '}
-              {authors.map((a, i) => (
+              {b.authors.length ? 'by' : ''}{' '}
+              {b.authors.map((a, i) => (
                 <span key={i}>{(i ? ', ' : '') + a}</span>
               ))}
             </Text>

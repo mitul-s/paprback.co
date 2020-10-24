@@ -9,7 +9,7 @@ import fetcher from "@/utils/fetcher";
 import { googlefetch } from "@/utils/fetch";
 
 
-const Search = ({ children }) => {
+const Search = () => {
 
     const router = useRouter();
     const { q } = router.query;
@@ -41,28 +41,11 @@ const Search = ({ children }) => {
         {data.totalItems === 0 ? 'Nothing found' : (<>
           <Heading size="md" mb={4} >Results for "{q}"</Heading>
           <SimpleGrid spacing={6} columns={[1, 1, 2]}>
-            {data.items.map((item) => {
-              console.log(item);
-              const book = {
-                id: item.id,
-                title: item.volumeInfo.title,
-                subtitle: item.volumeInfo.subtitle,
-                authors: item.volumeInfo.authors,
-                ratings: {
-                  count: item.volumeInfo.ratingsCount,
-                  avg: item.volumeInfo.averageRating
-                },
-                img: item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.thumbnail : ''
-              };
+            {data.items.map((book) => {
               return (
                 <BookCard
                   key={book.id}
-                  id={book.id}
-                  title={book.title}
-                  subtitle={book.subtitle}
-                  authors={book.authors}
-                  ratings={book.ratings}
-                  img={book.img}
+                  book={book}
                 />
               );
             })}

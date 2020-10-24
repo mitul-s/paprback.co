@@ -1,7 +1,9 @@
+import { GuestHeader } from "./Header";
+
 const GuestDash = () => {
     return (
         <>
-            Guest Dashboard
+            <GuestHeader/>
         </>
     )
 }

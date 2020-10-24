@@ -1,5 +1,6 @@
 import { Box, Flex } from "@chakra-ui/core"
 import Navigation from "@/components/Navigation"
+import Footer from "@/components/Footer"
 
 const CoreShell = ({ children, ...rest }) => {
     return (
@@ -16,6 +17,7 @@ const CoreShell = ({ children, ...rest }) => {
             {children}
           </Flex>
         </Box>
+        <Footer />
       </Box>
     );
 }
