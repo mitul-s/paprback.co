@@ -1,18 +1,25 @@
 import { Box, Heading, Text, Link, SimpleGrid } from "@chakra-ui/core"
 import BookCard from "../BookCard"
+import FullSpinner from "@/components/FullSpinner"
 
-
+import useUser from "@/utils/hooks/useUser"
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import { apifetch } from '@/utils/fetch';
 
-const Dashboard = ({ user, data }) => {
+const Dashboard = ({ user }) => {
 
-  console.log(user);
+  const { user: data, isLoading, isError } = useUser(user);
   const { data: shelves } = useSWR(data ? `${apifetch}/${user.uid}/shelves` : null, fetcher)
+  
+  if (isLoading) {
+    return <FullSpinner />;
+  }
 
-  console.log(shelves)
+  if (isError) {
+    return <h1>There was an error {isError.message}</h1>;
+  }
   
   if(!data) {
     return "Loading.."
@@ -37,6 +44,10 @@ const Dashboard = ({ user, data }) => {
 
     return data && shelves ? (
       <Box>
+        <Box mb={8}>
+          <Heading mb={3}>Welcome Back, {data.first_name} 👋</Heading>
+          <Text>Here's what you need to know.</Text>
+        </Box>
         <Box display={{ md: 'flex' }}>
           <Box w={{ md: 'lg' }} mr={{ md: 4 }} mb={{ base: 4 }}>
             <Heading fontSize="2xl" mb={3}>
@@ -74,7 +85,9 @@ const Dashboard = ({ user, data }) => {
           </Box>
         </Box>
       </Box>
-    ) : 'Loading'
+    ) : (
+      'Loading'
+    );
 }
 
 export default Dashboard;

@@ -1,5 +1,3 @@
-import CoreShell from "../CoreShell";
-
 const GuestDash = () => {
     return (
         <>

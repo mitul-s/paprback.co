@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import CoreShell from "@/components/CoreShell";
+import FullSpinner from '@/components/FullSpinner';
+// import ColorModeToggle from '@/components/ColorModeToggle';
+
+import Head from 'next/head';
+
 import { useAuth } from "@/lib/auth";
 import { useRouter } from "next/router"
 import useSWR from 'swr';
@@ -15,13 +20,13 @@ import {
   FormErrorMessage,
   Stack,
   Textarea,
-  Spinner,
   useToast
 } from '@chakra-ui/core';
 import NextLink from 'next/link';
 
 
 import { useForm } from 'react-hook-form';
+
 
 const Settings = () => {
 
@@ -36,11 +41,7 @@ const Settings = () => {
     const toast = useToast();
 
     if(!data) {
-        return (
-        <CoreShell>
-            <Spinner />
-        </CoreShell>
-        )
+        return <FullSpinner />
     }
 
     const onSubmit = async (data) => {
@@ -76,6 +77,9 @@ const Settings = () => {
 
     return (
       <>
+      <Head>
+        <title>Your Account // Paprback</title>
+      </Head>
         <CoreShell>
           <Heading mb={5} textAlign="center">Settings</Heading>
           <Box display="flex" alignItems="center" justifyContent="center">
@@ -181,6 +185,7 @@ const Settings = () => {
               </Button>
             </Stack>
           </Box>
+          {/* <ColorModeToggle /> */}
         </CoreShell>
       </>
     );

@@ -14,7 +14,7 @@ const Shelves = ({ title, subheading, shelf, portrait, ...rest }) => {
     return (
       <Box {...rest}>
         <ShelfHeading title={title} subheading={subheading} />
-        <Grid minH="20vh" gap={4} gridTemplateColumns={portrait ? "repeat(4, 1fr)" : "1fr 1fr"}>
+        <Grid minH="20vh" gap={4} gridTemplateColumns={portrait ? ["1fr", "1fr 1fr", "repeat(4, 1fr)"] : "1fr 1fr"}>
         {shelf ? shelf.map(item => {
             const book = {
               id: item.id,

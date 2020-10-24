@@ -1,6 +1,9 @@
 import { Box, Heading, Image, Spinner, Text, useToast } from "@chakra-ui/core";
 import CoreShell from '@/components/CoreShell';
 import Shelves from '@/components/Profile/Shelves';
+import FullSpinner from "@/components/FullSpinner";
+
+import Head from 'next/head';
 
 
 import { useRouter } from "next/router";
@@ -31,11 +34,7 @@ const User = () => {
       }, 1000)
     }
 
-    if(!data) {
-      <CoreShell>
-        <Spinner />
-      </CoreShell>
-    }
+    if(!data) return <FullSpinner />
 
     let u = {}
     let s = {}
@@ -55,6 +54,9 @@ const User = () => {
 
     return (
       <>
+      <Head>
+        <title>@{user.username} // Paprback</title>
+      </Head>
         <CoreShell>
           <Box
             bg="white"

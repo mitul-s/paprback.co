@@ -3,7 +3,7 @@ import NextLink from "next/link"
 
 const BookCard = ({ id, portrait, title, subtitle, authors = [], ratings, img, ...rest }) => {
 
-    const colors = ['red.100', 'orange.100', 'green.100', 'teal.100', 'purple.100', 'pink.100']
+    const colors = ['red.100', 'orange.100', 'green.100', 'teal.100', 'blue.100', 'purple.100', 'pink.100']
     const color = colors[Math.floor(Math.random() * colors.length)];
 
     return (
@@ -47,7 +47,7 @@ const BookCard = ({ id, portrait, title, subtitle, authors = [], ratings, img, .
                 mt={{ md: portrait ? 0 : 3 }}
               >
                 {title}
-                {subtitle ? `: ${subtitle}` : ''}
+                {portrait ? '' : subtitle ? `: ${subtitle}` : ''}
               </Link>
             </NextLink>
             <Text mt={1} color="gray.600" fontSize="md">

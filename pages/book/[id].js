@@ -5,10 +5,11 @@ import Head from "next/head"
 import { googlefetch } from '@/utils/fetch';
 
 import CoreShell from "@/components/CoreShell";
+import FullSpinner from '@/components/FullSpinner';
 import { Description, Cover } from "@/components/BookDetail"
 import s from "@/styles/Sidebar.module.css"
 
-import { Box, Spinner } from "@chakra-ui/core";
+import { Box } from "@chakra-ui/core";
 
 const BookDetail = () => {
 
@@ -21,7 +22,7 @@ const BookDetail = () => {
     
     
     if(!data) {
-      return <CoreShell><Spinner/></CoreShell>
+      return <FullSpinner />
     }
 
     if(error || data.error) {

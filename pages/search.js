@@ -1,11 +1,13 @@
 import CoreShell from "@/components/CoreShell";
-import { Box, Spinner, Stack, Heading, SimpleGrid } from "@chakra-ui/core"
+import BookCard from '@/components/BookCard';
+import FullSpinner from '@/components/FullSpinner';
+import { Box, Stack, Heading, SimpleGrid } from "@chakra-ui/core"
 
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetcher from "@/utils/fetcher";
 import { googlefetch } from "@/utils/fetch";
-import BookCard from "@/components/BookCard";
+
 
 const Search = ({ children }) => {
 
@@ -30,11 +32,7 @@ const Search = ({ children }) => {
     }
 
     if(!data) {
-        return (
-          <CoreShell justifyContent="center" alignItems="center" h="80vh">
-            <Spinner size="xl" />
-          </CoreShell>
-        );
+      return <FullSpinner />
     }
 
     return (

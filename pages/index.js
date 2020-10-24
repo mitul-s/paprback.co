@@ -3,35 +3,42 @@ import CoreShell from '@/components/CoreShell';
 import Dashboard from '@/components/Dashboard/Dashboard';
 import GuestDash from '@/components/Dashboard/GuestDash';
 import Featured from '@/components/Dashboard/Featured';
-import { Heading, Box, Text } from "@chakra-ui/core";
+// import FullSpinner from '@/components/FullSpinner';
+// import { Heading, Box, Text } from "@chakra-ui/core";
 
 
 import { useAuth } from "@/lib/auth"
-import { useRouter } from 'next/router';
-import useSWR from 'swr';
-import fetcher from '@/utils/fetcher';
-import { apifetch } from '@/utils/fetch';
+// import useUser from "@/utils/hooks/useUser";
+// import { useRouter } from 'next/router';
+// import useSWR from 'swr';
+// import fetcher from '@/utils/fetcher';
+// import { apifetch } from '@/utils/fetch';
+
 
 const Home = () => {
 
   const { user } = useAuth();
-  const { data: id, error } = useSWR(user ? `${apifetch}/user/${user.username}` : null, fetcher)
-  const { data } = useSWR(() => `${apifetch}/${id.user_id}/profile`, fetcher)
 
-  return user && data ? (
-    <CoreShell>
-      <Box mb={8}>
-        <Heading mb={3}>Welcome Back, {data.first_name} 👋</Heading>
-        <Text>Here's what you need to know.</Text>
-      </Box>
-      <Dashboard user={user} data={data} />
-      <Featured/>
-    </CoreShell>
+  return user ? (
+    <>
+      <Head>
+        <title>Dashboard // Paprback</title>
+      </Head>
+      <CoreShell>
+        <Dashboard user={user} />
+        <Featured />
+      </CoreShell>
+    </>
   ) : (
-    <CoreShell>
-      <GuestDash />
-      <Featured/>
-    </CoreShell>
+    <>
+      <Head>
+        <title>Home // Paprback</title>
+      </Head>
+      <CoreShell>
+        <GuestDash />
+        <Featured />
+      </CoreShell>
+    </>
   );
 
   // if(!data) {
