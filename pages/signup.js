@@ -25,7 +25,6 @@ const Signup = () => {
   const { signup } = useAuth();
 
   const onSignup = (creds) => {
-    console.log(creds);
     setLoading(true);
     signup(creds).catch((error) => {
       setLoading(false);

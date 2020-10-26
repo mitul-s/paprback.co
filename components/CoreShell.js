@@ -11,7 +11,7 @@ const CoreShell = ({ children, ...rest }) => {
             margin="0 auto"
             direction="column"
             maxW="1250px"
-            px={8}
+            px={5}
             {...rest}
           >
             {children}

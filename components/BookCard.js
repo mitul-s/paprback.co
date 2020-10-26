@@ -11,7 +11,7 @@ const BookCard = ({ book, portrait, ...rest }) => {
       id: book.id,
       title: book.volumeInfo.title,
       subtitle: book.volumeInfo.subtitle,
-      authors: book.volumeInfo.authors,
+      authors: book.volumeInfo.authors ? book.volumeInfo.authors : '',
       ratings: {
         count: book.volumeInfo.ratingsCount,
         avg: book.volumeInfo.averageRating
@@ -41,7 +41,7 @@ const BookCard = ({ book, portrait, ...rest }) => {
               objectFit="contain"
               src={b.img}
               alt="Woman paying for a purchase"
-              fallbackSrc="https://via.placeholder.com/175x200"
+              fallbackSrc={`https://via.placeholder.com/175x200?text=${b.title}`}
             />
           </Box>
           <Box
@@ -66,10 +66,10 @@ const BookCard = ({ book, portrait, ...rest }) => {
               </Link>
             </NextLink>
             <Text mt={1} color="gray.600" fontSize="md">
-              {b.authors.length ? 'by' : ''}{' '}
-              {b.authors.map((a, i) => (
+              {b.authors ? 'by' : ''}{' '}
+              {b.authors.length ? b.authors.map((a, i) => (
                 <span key={i}>{(i ? ', ' : '') + a}</span>
-              ))}
+              )) : ''}
             </Text>
             {/* <Text
               mt={2}

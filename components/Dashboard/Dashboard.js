@@ -3,7 +3,6 @@ import BookCard from "../BookCard"
 import { AuthHeader } from "./Header";
 
 import useUser from "@/utils/hooks/useUser"
-import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import { apifetch } from '@/utils/fetch';
@@ -45,7 +44,8 @@ const Dashboard = ({ user }) => {
             </Heading>
             <>
               {shelves ? (
-                <BookCard portrait={true} book={s.cr[0]} />
+                s.cr ?
+                <BookCard portrait={true} book={s.cr[0]} /> : "You're currently reading anything!"
               ) : (
                 <Skeleton h="10vh" />
               )}

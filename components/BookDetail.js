@@ -4,19 +4,22 @@ import { Box, Grid, Heading, Image, Stack, Text, Button, Collapse, Flex, Divider
 const Cover = ({ title, img }) => (
   <>
     <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        w="full"
-        flexDirection="column"
-        bg="white"
-        p={8}
-        height="max-content"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      w="full"
+      flexDirection="column"
+      bg="white"
+      p={8}
+      height="max-content"
     >
-        <Image src={img} />
+      <Image
+        src={img}
+        fallbackSrc={`https://via.placeholder.com/350x500?text=${title}`}
+      />
     </Box>
     <Box bg="black" color="white" h="5vh" mt={4} rounded="md" p={3}>
-    Share it on Twitter or Pinterest
+      Share it on Twitter or Pinterest
     </Box>
   </>
 );

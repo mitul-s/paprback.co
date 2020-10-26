@@ -9,7 +9,7 @@ const AuthHeader = ({ name }) => (
 
 const GuestHeader = () => (
   <Box mb={8} bg="white" h="35vh" p={5} display="flex"  alignItems="center" justifyContent="center" flexDirection="column">
-    <Heading mb={3}>Welcome to Paprback 👋</Heading>
+    <Heading mb={3} fontSize="2xl">Welcome to Paprback 👋</Heading>
     <Text>Search for your favourite book</Text>
   </Box>
 );

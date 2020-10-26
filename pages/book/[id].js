@@ -46,7 +46,7 @@ const BookDetail = () => {
             count: data.volumeInfo.ratingsCount,
             avg: data.volumeInfo.averageRating
           },
-          img: data.volumeInfo.imageLinks.small.replace('http://', 'https://'),
+          img: data.volumeInfo.imageLinks.small ? data.volumeInfo.imageLinks.small.replace('http://', 'https://') : '',
           detail: {
             pubDate: data.volumeInfo.publishedDate,
             pages: data.volumeInfo.pageCount,
@@ -59,13 +59,13 @@ const BookDetail = () => {
     return (
       <>
       <Head>
-        <title>{book.title} | Paprback</title>
+        <title>{book.title} // Paprback</title>
       </Head>
       <CoreShell>
         <Box className={s.withSidebar}>
           <Box>
             <Box className={s.sidebar}>
-                <Cover img={book.img}/>
+                <Cover img={book.img} title={book.title}/>
             </Box>
             <Box className={s.notSidebar}>
               <Description title={book.title} subtitle={book.subtitle} authors={book.authors} desc={book.desc} detail={book.detail} />

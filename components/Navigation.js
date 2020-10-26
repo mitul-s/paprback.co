@@ -79,7 +79,7 @@ const Navigation = () => {
           maxW="1250px"
           m="0 auto"
           w="full"
-          px={8}
+          px={5}
           h="12vh"
           //   border="1px solid red"
         >
