@@ -1,7 +1,8 @@
 import { Box, Image, Link, Text, Icon } from "@chakra-ui/core"
+import ShelfAction from "@/components/ShelfAction"
 import NextLink from "next/link"
 
-const BookCard = ({ book, portrait, ...rest }) => {
+const BookCard = ({ book, portrait, children, ...rest }) => {
 
     const colors = ['red.100', 'orange.100', 'green.100', 'teal.100', 'blue.100', 'purple.100', 'pink.100']
     const color = colors[Math.floor(Math.random() * colors.length)];
@@ -35,7 +36,6 @@ const BookCard = ({ book, portrait, ...rest }) => {
             shadow="sm"
           >
             <Image
-              // rounded="8px"
               width={{ md: portrait ? '' : 40 }}
               height={{ md: 175 }}
               objectFit="contain"
@@ -71,7 +71,7 @@ const BookCard = ({ book, portrait, ...rest }) => {
                 <span key={i}>{(i ? ', ' : '') + a}</span>
               )) : ''}
             </Text>
-            {/* <Text
+            <Text
               mt={2}
               color="gray.500"
               fontSize="sm"
@@ -89,10 +89,11 @@ const BookCard = ({ book, portrait, ...rest }) => {
                   <path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928L12 18.26zm0-2.292l4.247 2.377-.949-4.773 3.573-3.305-4.833-.573L12 5.275l-2.038 4.42-4.833.572 3.573 3.305-.949 4.773L12 15.968z" />
                 </svg>
               </Icon>
-              {ratings.count > 0
-                ? `${ratings.avg} (${ratings.count} Ratings)`
+              {b.ratings.count > 0
+                ? `${b.ratings.avg} (${b.ratings.count} Ratings)`
                 : 'No ratings'}
-            </Text> */}
+            </Text>
+            {children}
           </Box>
         </Box>
       </>

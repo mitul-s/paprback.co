@@ -13,6 +13,7 @@ import { apifetch } from '@/utils/fetch';
 import { useAuth } from '@/lib/auth';
 
 
+
 const User = () => {
     const { user } = useAuth();
     const router = useRouter();
@@ -84,8 +85,8 @@ const User = () => {
               <Text>{u.bio}</Text>
             </Box>
           </Box>
-          <Shelves title="Currently" subheading="Books you're reading at the moment" shelf={s.cr} />
-          <Shelves title="Up Next" subheading="Here's what's on your reading list" shelf={s.rl} />
+          <Shelves title="Currently" subheading="Books you're reading at the moment" shelf={s.cr} shelfType="cr"/>
+          <Shelves title="Up Next" subheading="Here's what's on your reading list" shelf={s.rl}  shelfType="rl" />
           <Shelves title="Previously" subheading="Books you've read before" shelf={s.pr} portrait={true} />
         </CoreShell>
       </>

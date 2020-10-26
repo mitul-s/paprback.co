@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Grid } from "@chakra-ui/core";
+import { Box, Heading, Text, Grid, Skeleton } from "@chakra-ui/core";
 import useSWR from 'swr'
 import { apifetch } from '@/utils/fetch'
 import fetcher from '@/utils/fetcher';
@@ -21,20 +21,40 @@ const Featured = () => {
     }
 
 
-    return data && b.book ? (
+    return (
       <Box mt={10}>
         <Box mb={4}>
-          <Heading size="lg" mb={2}>The New York Times</Heading>
+          <Heading size="lg" mb={2}>
+            The New York Times
+          </Heading>
           <Text>Best selling books of the week</Text>
         </Box>
-        <Grid gridTemplateColumns={["repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(5, 1fr)"]} gap={3}>
-          {b.book.filter(book => book !== undefined).map(i => {
-            return <BookCard key={i.id} book={i} portrait={true} />
-          })
-          }
+        <Grid
+          gridTemplateColumns={[
+            'repeat(2, 1fr)',
+            'repeat(2, 1fr)',
+            'repeat(5, 1fr)'
+          ]}
+          gap={3}
+        >
+          {data && b.book ? (
+            b.book
+              .filter((book) => book !== undefined)
+              .map((i) => {
+                return <BookCard key={i.id} book={i} portrait={true} />;
+              })
+          ) : (
+            <>
+              <Skeleton h="20vh" />
+              <Skeleton h="20vh" />
+              <Skeleton h="20vh" />
+              <Skeleton h="20vh" />
+              <Skeleton h="20vh" />
+            </>
+          )}
         </Grid>
       </Box>
-    ) : '';
+    );
 }
 
 export default Featured;

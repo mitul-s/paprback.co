@@ -1,16 +1,19 @@
 import { Box, Text, Heading, Link, SimpleGrid, Spinner, Skeleton } from "@chakra-ui/core"
 import BookCard from "../BookCard"
+import DashCard from './DashCard';
 import { AuthHeader } from "./Header";
 
 import useUser from "@/utils/hooks/useUser"
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import { apifetch } from '@/utils/fetch';
+import ShelfAction from "@/components/ShelfAction";
 
 const Dashboard = ({ user }) => {
 
   const { user: data, isLoading, isError } = useUser(user);
   const { data: shelves } = useSWR(data ? `${apifetch}/${user.uid}/shelves` : null, fetcher)
+  console.log(shelves);
   
   if (isLoading) {
     return (
@@ -36,7 +39,7 @@ const Dashboard = ({ user }) => {
 
     return (
       <Box>
-      <AuthHeader name={data.first_name} />
+        <AuthHeader name={data.first_name} />
         <Box display={{ md: 'flex' }}>
           <Box w={{ md: 'lg' }} mr={{ md: 4 }} mb={{ base: 4 }}>
             <Heading fontSize="2xl" mb={3}>
@@ -44,13 +47,27 @@ const Dashboard = ({ user }) => {
             </Heading>
             <>
               {shelves ? (
-                s.cr ?
-                <BookCard portrait={true} book={s.cr[0]} /> : "You're currently reading anything!"
+                s.cr ? (
+                  <>
+                    <BookCard portrait={true} book={s.cr[0]}>
+                      <ShelfAction
+                        mt={3}
+                        bookID={s.cr[0].id}
+                        shelfID={'previously_read'}
+                      >
+                        Mark as completed
+                      </ShelfAction>
+                    </BookCard>
+                  </>
+                ) : (
+                  "You're currently reading anything!"
+                )
               ) : (
                 <Skeleton h="10vh" />
               )}
             </>
           </Box>
+
           <Box w="full">
             <Box
               display="flex"
@@ -63,12 +80,17 @@ const Dashboard = ({ user }) => {
             </Box>
             <Box>
               <SimpleGrid columns={2} spacing={4}>
-                {shelves ? (<><Box bg="white" p={4}>
-                  Book 1
-                </Box>
-                <Box bg="white" p={4}>
-                  Book 2
-                </Box></>) : (<><Skeleton h="10vh"/><Skeleton h="10vh"/></>)}
+                {shelves ? (
+                  <>
+                    <DashCard book={s.rl[0]} />
+                    <DashCard book={s.rl[10]} />
+                  </>
+                ) : (
+                  <>
+                    <Skeleton h="10vh" />
+                    <Skeleton h="10vh" />
+                  </>
+                )}
               </SimpleGrid>
             </Box>
           </Box>
