@@ -1,9 +1,10 @@
-import { Box, Text, Heading, Link, SimpleGrid, Spinner, Skeleton } from "@chakra-ui/core"
+import { Box, Text, Center, Heading, Link, SimpleGrid, Spinner, Skeleton } from "@chakra-ui/core"
 import BookCard from "../BookCard"
 import DashCard from './DashCard';
 import { AuthHeader } from "./Header";
 
 import useUser from "@/utils/hooks/useUser"
+import useShelf from '@/utils/hooks/useShelf';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import { apifetch } from '@/utils/fetch';
@@ -12,14 +13,13 @@ import ShelfAction from "@/components/ShelfAction";
 const Dashboard = ({ user }) => {
 
   const { user: data, isLoading, isError } = useUser(user);
-  const { data: shelves } = useSWR(data ? `${apifetch}/${user.uid}/shelves` : null, fetcher)
-  console.log(shelves);
+  const { shelf: shelves } = useShelf(data);
   
   if (isLoading) {
     return (
-      <Box display="flex" alignItems="center" justifyContent="center" h="30vh">
+      <Center h="30vh">
         <Spinner />
-      </Box>
+      </Center>
     );
   }
 

@@ -8,7 +8,9 @@ import { useAuth } from '@/lib/auth';
 
 import { mutate } from "swr";
 
-const ShelfAction = ({ bookID, shelfID, children, ...rest }) => {
+import { withAuthModal } from '@/components/Auth';
+
+const ShelfAction = ({ bookID, shelfID, children, openAuthModal, ...rest }) => {
 
     const { user } = useAuth();
     const toast = useToast();
@@ -24,20 +26,20 @@ const ShelfAction = ({ bookID, shelfID, children, ...rest }) => {
             addToShelf(data)
         } else {
             setLoading(false);
-            console.log("this is not a user")
+            openAuthModal();
         }
     }
 
     const addToShelf = async (update) => {
             setLoading(true)
             return apipost
-            .patch(`/${user.uid}/shelves/exclusive`, update, {
+            .patch(`/${user.user_id}/shelves/exclusive`, update, {
               headers: {
                 Authorization: `Bearer ${user.token}`
               }
             })
             .then(() => {
-                mutate(`${apifetch}/${user.uid}/shelves`);
+                mutate(`${apifetch}/${user.user_id}/shelves`);
                 setLoading(false);
                 toast({
                     title: 'Complete!',
@@ -66,4 +68,4 @@ const ShelfAction = ({ bookID, shelfID, children, ...rest }) => {
     );
 }
 
-export default ShelfAction;
+export default withAuthModal(ShelfAction);

@@ -16,6 +16,7 @@ import { apifetch, apipost } from '@/utils/fetch';
 
 import {
   Box,
+  Center,
   Heading,
   Button,
   Input,
@@ -36,7 +37,7 @@ const Settings = () => {
 
     const { user } = useAuth();
     const router = useRouter();
-    // const { username } = router.query;
+    const { username } = router.query;
     // const { data: id, error } = useSWR(username ? `${apifetch}/user/${username}` : null, fetcher)
     // const { data } = useSWR(() => `${apifetch}/${id.user_id}/profile`, fetcher)
     const { user: data, isLoading, isError, mutate } = useUser(user);
@@ -56,7 +57,7 @@ const Settings = () => {
     const onSubmit = async (creds) => {;
         setLoading(true);
         return apipost
-          .patch(`/${user.uid}/profile`, creds, {
+          .patch(`/${user.user_id}/profile`, creds, {
               headers: {
                   Authorization: `Bearer ${user.token}`
               }
@@ -83,14 +84,14 @@ const Settings = () => {
           });
     }
 
-    return (
+    return user && user.username === username ? (
       <>
       <Head>
         <title>Your Account // Paprback</title>
       </Head>
         <CoreShell>
           <Heading mb={5} textAlign="center">Settings</Heading>
-          <Box display="flex" alignItems="center" justifyContent="center">
+          <Center>
             <Stack
               as="form"
               backgroundColor="white"
@@ -192,11 +193,11 @@ const Settings = () => {
                 Save
               </Button>
             </Stack>
-          </Box>
+          </Center>
           {/* <ColorModeToggle /> */}
         </CoreShell>
       </>
-    );
+    ) : 'Not ur page';
 }
 
 export default Settings;

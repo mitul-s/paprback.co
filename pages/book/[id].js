@@ -6,7 +6,8 @@ import { googlefetch } from '@/utils/fetch';
 
 import CoreShell from "@/components/CoreShell";
 import FullSpinner from '@/components/FullSpinner';
-import { Description, Cover } from "@/components/BookDetail"
+import { Cover, DetailBox, Titles, ShelfButtons } from "@/components/BookDetails"
+import { Description } from '@/components/BookDetail';
 import s from "@/styles/Sidebar.module.css"
 
 import { Box } from "@chakra-ui/core";
@@ -19,8 +20,6 @@ const BookDetail = () => {
       revalidateOnFocus: false
     });
 
-    
-    
     if(!data) {
       return <FullSpinner />
     }
@@ -65,10 +64,13 @@ const BookDetail = () => {
         <Box className={s.withSidebar}>
           <Box>
             <Box className={s.sidebar}>
-                <Cover img={book.img} title={book.title}/>
+                <Cover img={book.img} title={book.title} />
             </Box>
             <Box className={s.notSidebar}>
-              <Description title={book.title} subtitle={book.subtitle} authors={book.authors} desc={book.desc} detail={book.detail} />
+              <Titles title={book.title} subtitle={book.subtitle} authors={book.authors} />
+              <Description id={data.id} title={book.title} subtitle={book.subtitle} authors={book.authors} desc={book.desc} detail={book.detail} />
+              {/* <ShelfButtons id={book.id} /> */}
+              <DetailBox desc={book.desc} detail={book.detail} />
             </Box>
           </Box>
         </Box>

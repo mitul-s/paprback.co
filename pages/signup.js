@@ -113,7 +113,7 @@ const Signup = () => {
           </FormErrorMessage>
         </FormControl>
         <Button
-          id="login"
+          id="register"
           type="submit"
           backgroundColor="gray.900"
           color="white"
@@ -128,7 +128,7 @@ const Signup = () => {
             transform: 'scale(0.95)'
           }}
         >
-          Login
+          Sign Up
         </Button>
       </Stack>
       <NextLink href="/signin">

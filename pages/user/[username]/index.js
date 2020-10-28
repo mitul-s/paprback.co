@@ -1,26 +1,31 @@
 import { Box, Heading, Image, Spinner, Text, useToast } from "@chakra-ui/core";
-import CoreShell from '@/components/CoreShell';
-import Shelves from '@/components/Profile/Shelves';
 import FullSpinner from "@/components/FullSpinner";
+
+import AuthProfile from "@/components/Profile/views/AuthProfile";
+import GuestProfile from '@/components/Profile/views/GuestProfile';
 
 import Head from 'next/head';
 
 
+import { useAuth } from '@/lib/auth'
 import { useRouter } from "next/router";
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import { apifetch } from '@/utils/fetch';
-import { useAuth } from '@/lib/auth';
 
+
+import useShelf from "@/utils/hooks/useShelf"
 
 
 const User = () => {
+    
     const { user } = useAuth();
     const router = useRouter();
     const { username } = router.query;
     const { data: id, error } = useSWR(username ? `${apifetch}/user/${username}` : null, fetcher)
     const { data } = useSWR(() => `${apifetch}/${id.user_id}/profile`, fetcher)
-    const { data: shelves } = useSWR(() => `${apifetch}/${id.user_id}/shelves`, fetcher)
+    const { shelf: shelves } = useShelf(id);
+    
 
     const toast = useToast();
     if(error) {
@@ -53,44 +58,20 @@ const User = () => {
       }
     }
 
+
     return (
       <>
-      <Head>
-        <title>@{user.username} // Paprback</title>
-      </Head>
-        <CoreShell>
-          <Box
-            bg="white"
-            minH="20vh"
-            p={5}
-            display="flex"
-            justifyContent="center"
-            placeItems="center"
-          >
-            <Box textAlign="center">
-              <Box mb={3}>
-                <Image
-                  rounded="100%"
-                  border="3px solid"
-                  borderColor="teal.500"
-                  fallbackSrc="https://via.placeholder.com/150x150"
-                />
-              </Box>
-              <Heading fontSize="lg">
-                {u.firstName} {u.lastName}
-              </Heading>
-              <Heading fontSize="md" fontWeight="normal">
-                {username}
-              </Heading>
-              <Text>{u.bio}</Text>
-            </Box>
-          </Box>
-          <Shelves title="Currently" subheading="Books you're reading at the moment" shelf={s.cr} shelfType="cr"/>
-          <Shelves title="Up Next" subheading="Here's what's on your reading list" shelf={s.rl}  shelfType="rl" />
-          <Shelves title="Previously" subheading="Books you've read before" shelf={s.pr} portrait={true} />
-        </CoreShell>
+        <Head>
+          <title>@{username} // Paprback</title>
+        </Head>
+        {user && user.username === username ? (
+          <AuthProfile u={u} s={s} username={username} />
+        ) : (
+          <GuestProfile u={u} s={s} username={username} />
+        )}
       </>
     );
+
 }
 
 

@@ -1,5 +1,4 @@
 import { Box, Image, Link, Text, Icon } from "@chakra-ui/core"
-import ShelfAction from "@/components/ShelfAction"
 import NextLink from "next/link"
 
 const BookCard = ({ book, portrait, children, ...rest }) => {
