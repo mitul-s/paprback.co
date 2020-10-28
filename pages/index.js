@@ -3,16 +3,8 @@ import CoreShell from '@/components/CoreShell';
 import Dashboard from '@/components/Dashboard/Dashboard';
 import GuestDash from '@/components/Dashboard/GuestDash';
 import Featured from '@/components/Dashboard/Featured';
-// import { Heading, Box, Text } from "@chakra-ui/core";
-
 
 import { useAuth } from "@/lib/auth"
-// import FullSpinner from '@/components/FullSpinner';
-// import useUser from "@/utils/hooks/useUser";
-// import { useRouter } from 'next/router';
-// import useSWR from 'swr';
-// import fetcher from '@/utils/fetcher';
-// import { apifetch } from '@/utils/fetch';
 
 
 const Home = () => {

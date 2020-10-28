@@ -68,8 +68,8 @@ const BookDetail = () => {
             </Box>
             <Box className={s.notSidebar}>
               <Titles title={book.title} subtitle={book.subtitle} authors={book.authors} />
-              <Description id={data.id} title={book.title} subtitle={book.subtitle} authors={book.authors} desc={book.desc} detail={book.detail} />
-              {/* <ShelfButtons id={book.id} /> */}
+              {/* <Description id={data.id} title={book.title} subtitle={book.subtitle} authors={book.authors} desc={book.desc} detail={book.detail} /> */}
+              <ShelfButtons id={book.id} />
               <DetailBox desc={book.desc} detail={book.detail} />
             </Box>
           </Box>
