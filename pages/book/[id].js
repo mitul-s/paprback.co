@@ -10,6 +10,7 @@ import { Cover, DetailBox, Titles, ShelfButtonsContainer } from "@/components/Bo
 import s from "@/styles/Sidebar.module.css"
 
 import { Box, HStack } from "@chakra-ui/core";
+import ShareBox from "@/components/BookDetails/ShareBox";
 
 const BookDetail = () => {
 
@@ -64,6 +65,7 @@ const BookDetail = () => {
             <Box>
               <Box className={s.sidebar}>
                 <Cover img={book.img} title={book.title} />
+                <ShareBox />
               </Box>
               <Box className={s.notSidebar}>
                 <Titles

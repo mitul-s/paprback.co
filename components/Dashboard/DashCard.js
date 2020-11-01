@@ -25,10 +25,17 @@ const EmptyCard = () => {
 const DashCard = ({ book, user, ...rest }) => {
     return book ? (
       <>
-        <Box bg="white" p={4} minHeight="20vh" {...rest}>
+        <Box bg="white" p={4} minHeight="20vh" minW="0" {...rest}>
           <Stack>
             <NextLink href={`/book/${book.id}`}>
-              <Heading fontSize={['lg', 'xl']}>{book.volumeInfo.title}</Heading>
+              <Heading
+                as="h2"
+                fontSize={['lg', 'xl']}
+                lineHeight={1.45}
+                isTruncated
+              >
+                {book.volumeInfo.title}
+              </Heading>
             </NextLink>
             <Text>by {book.volumeInfo.authors}</Text>
             <NakedButton
@@ -36,7 +43,7 @@ const DashCard = ({ book, user, ...rest }) => {
               text="Mark as reading"
               w="max-content"
               book={book}
-              shelf='currently_reading'
+              shelf="currently_reading"
             >
               Add to your reading list
             </NakedButton>

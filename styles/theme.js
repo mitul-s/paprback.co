@@ -21,7 +21,7 @@ const theme = extendTheme({
     }
   },
   fonts: {
-    heading: 'Syne',
+    heading: 'Inter',
     body: 'Inter'
   },
   fontWeights: {

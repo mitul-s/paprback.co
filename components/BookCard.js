@@ -56,6 +56,8 @@ const BookCard = ({ book, portrait, children, ...rest }) => {
             justifyContent="center"
             flexDirection="column"
             p={4}
+            minWidth="0"
+            w="full"
           >
             {/* <NextLink href={`/book/${id}-${title.replace(/ /g, "-").replace(/[!,.:]/g, "")}`}> */}
             <NextLink href={`/book/${b.id}`} passHref>
@@ -86,7 +88,18 @@ const BookCard = ({ book, portrait, children, ...rest }) => {
               placeItems="center"
             >
               <Icon mr={1}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z" fill="rgba(0,0,0,1)"/></svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                >
+                  <path fill="none" d="M0 0h24v24H0z" />
+                  <path
+                    d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"
+                    fill="rgba(0,0,0,1)"
+                  />
+                </svg>
               </Icon>
               {b.ratings.count > 0
                 ? `${b.ratings.avg} (${b.ratings.count} Ratings)`
