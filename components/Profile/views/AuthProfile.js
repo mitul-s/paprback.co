@@ -1,19 +1,12 @@
-import { Box, Image, Heading, Text } from "@chakra-ui/core";
+import { Box, Center, Image, Heading, Text } from "@chakra-ui/core";
 import CoreShell from "@/components/CoreShell"
 import Shelves from "@/components/Profile/Shelves"
 
-const AuthProfile = ({ u, s, loading }) => {
+const AuthProfile = ({ u, s, loading, username }) => {
     return (
       <>
         <CoreShell>
-          <Box
-            bg="white"
-            minH="20vh"
-            p={5}
-            display="flex"
-            justifyContent="center"
-            placeItems="center"
-          >
+          <Center bg="white" minH="20vh" p={5} rounded="xl">
             <Box textAlign="center">
               <Box
                 mb={3}
@@ -24,7 +17,7 @@ const AuthProfile = ({ u, s, loading }) => {
                 <Image
                   rounded="100%"
                   border="3px solid"
-                  borderColor="teal.500"
+                  borderColor="brand.900"
                   fallbackSrc="https://via.placeholder.com/150x150"
                 />
               </Box>
@@ -32,28 +25,31 @@ const AuthProfile = ({ u, s, loading }) => {
                 {u.firstName} {u.lastName}
               </Heading>
               <Heading fontSize="md" fontWeight="normal">
-                hi
+                @{username}
               </Heading>
               <Text>{u.bio}</Text>
             </Box>
-          </Box>
+          </Center>
           <Shelves
             title="Currently"
             subheading="Books you're reading at the moment"
             shelf={s.cr}
             shelfType="cr"
+            username={username}
           />
           <Shelves
             title="Up Next"
             subheading="Here's what's on your reading list"
             shelf={s.rl}
             shelfType="rl"
+            username={username}
           />
           <Shelves
             title="Previously"
             subheading="Books you've read before"
             shelf={s.pr}
             portrait={true}
+            username={username}
           />
         </CoreShell>
       </>

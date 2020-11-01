@@ -12,6 +12,7 @@ import {
   FormErrorMessage,
   Stack,
   Icon,
+  Heading,
   Link,
   useToast
 } from '@chakra-ui/core';
@@ -55,7 +56,8 @@ const Signup = () => {
       >
         <Flex justify="center">
           <Box as="a" href="/" aria-label="Back to homepage">
-            <Icon color="black" name="logo" size="64px" mb={4} />
+            {/* <Icon color="black" name="logo" size="64px" mb={4} /> */}
+            <Heading fontSize="lg">Paprback</Heading>
           </Box>
         </Flex>
         <FormControl isInvalid={errors.email && errors.email.message}>

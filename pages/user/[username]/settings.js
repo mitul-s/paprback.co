@@ -86,15 +86,18 @@ const Settings = () => {
 
     return user && user.username === username ? (
       <>
-      <Head>
-        <title>Your Account // Paprback</title>
-      </Head>
+        <Head>
+          <title>Your Account // Paprback</title>
+        </Head>
         <CoreShell>
-          <Heading mb={5} textAlign="center">Settings</Heading>
+          <Heading mb={5} textAlign="center">
+            Settings
+          </Heading>
           <Center>
             <Stack
+              bg="whiteAlpha.900"
+              color="gray.900"
               as="form"
-              backgroundColor="white"
               borderRadius={[0, 8]}
               errors={errors}
               maxWidth="600px"
@@ -178,7 +181,7 @@ const Settings = () => {
                 id="login"
                 type="submit"
                 backgroundColor="gray.900"
-                color="white"
+                color="whiteAlpha.900"
                 isLoading={loading}
                 fontWeight="medium"
                 mt={4}
@@ -197,7 +200,9 @@ const Settings = () => {
           {/* <ColorModeToggle /> */}
         </CoreShell>
       </>
-    ) : 'Not ur page';
+    ) : (
+      'Not ur page'
+    );
 }
 
 export default Settings;

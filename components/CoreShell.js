@@ -4,7 +4,7 @@ import Footer from "@/components/Footer"
 
 const CoreShell = ({ children, ...rest }) => {
     return (
-      <Box bg="gray.100">
+      <Box>
         <Navigation />
         <Box minH="100vh" maxW="1250px" margin="0 auto">
           <Flex

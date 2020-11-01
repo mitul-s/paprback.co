@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from "@chakra-ui/core";
+import { Box, Center, Heading, Text } from "@chakra-ui/core";
 
 const AuthHeader = ({ name }) => (
   <Box mb={8}>
@@ -8,10 +8,10 @@ const AuthHeader = ({ name }) => (
 );
 
 const GuestHeader = () => (
-  <Box mb={8} bg="white" h="35vh" p={5} display="flex"  alignItems="center" justifyContent="center" flexDirection="column">
+  <Center mb={8} bg="white" h="35vh" p={5} flexDirection="column" rounded="xl">
     <Heading mb={3} fontSize="2xl">Welcome to Paprback 👋</Heading>
     <Text>Search for your favourite book</Text>
-  </Box>
+  </Center>
 );
 
 export { AuthHeader, GuestHeader };

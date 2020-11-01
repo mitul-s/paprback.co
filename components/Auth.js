@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useAuth } from "@/lib/auth";
 import { Box, Flex, Icon, Link, Stack, Heading, Text, FormControl, FormLabel, Input, FormErrorMessage, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, useDisclosure, useToast } from "@chakra-ui/core";
 import { useForm } from 'react-hook-form';
@@ -9,9 +9,14 @@ const AuthContent = ({ register, errors, type, loading, ...rest }) => {
       <>
         <Stack {...rest}>
           <Flex justify="center">
-            <Box as="a" href="/" aria-label="Back to homepage" textAlign="center">
-                <Heading fontSize="lg">Paprback</Heading>
-                <Text>Sign up for an account</Text>
+            <Box
+              as="a"
+              href="/"
+              aria-label="Back to homepage"
+              textAlign="center"
+            >
+              <Heading fontSize="lg">Paprback</Heading>
+              <Text>Sign up for an account</Text>
             </Box>
           </Flex>
           <FormControl isInvalid={errors.email && errors.email.message}>
@@ -99,7 +104,12 @@ const AuthModal = ({ isOpen, onClose, loading, type, onSubmit }) => {
     const { handleSubmit, register, errors } = useForm();
 
     return (
-      <Modal isOpen={isOpen} onClose={onClose} size="md" isCentered>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        size="md"
+        isCentered
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />

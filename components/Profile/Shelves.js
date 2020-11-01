@@ -1,14 +1,15 @@
-import { Box, Heading, Skeleton, Stack, Text, Grid, Flex } from "@chakra-ui/core"
+import { Box, Heading, Center, Skeleton, Text, Grid } from "@chakra-ui/core"
 import BookCard from "../BookCard"
-import ShelfAction from '@/components/ShelfAction';
+// import ShelfAction from '@/components/ShelfAction';
+import { NakedButton } from "../Shelves/Buttons";
 
 
 const EmptyState = ({ username }) => {
   return (
-    <Flex w="full" h="20vh" bg="white" p={5} alignItems="center" justifyContent="center">
+    <Center rounded="xl" h="20vh" bg="white">
       <Text>@{username} currently doesn't have books on this shelf.</Text>
-    </Flex>
-  )
+    </Center>
+  );
 }
 
 const ShelfHeading = ({ title, subheading }) => (
@@ -18,7 +19,7 @@ const ShelfHeading = ({ title, subheading }) => (
     </Box>
 )
 
-const Shelves = ({ title, subheading, shelf, shelfType, portrait, username, ...rest }) => { 
+const Shelves = ({ title, subheading, shelf, user, shelfType, portrait, username, ...rest }) => { 
   
   let s = {};
   if(shelfType === 'cr') {
@@ -37,7 +38,7 @@ const Shelves = ({ title, subheading, shelf, shelfType, portrait, username, ...r
   if (shelfType === 'rl') {
     s = {
       id: 'currently_reading',
-      text: 'Add to currently reading',
+      text: 'Mark as reading',
     };
   }
 
@@ -52,16 +53,19 @@ const Shelves = ({ title, subheading, shelf, shelfType, portrait, username, ...r
             minH="20vh"
             gap={4}
             gridTemplateColumns={
-              portrait ? ['1fr', '1fr 1fr', 'repeat(4, 1fr)'] : '1fr 1fr'
+              portrait ? ['1fr', '1fr 1fr', 'repeat(4, 1fr)'] : ['1fr', null, '1fr 1fr']
             }
           >
             {shelf.map((book) => {
               return (
                 <BookCard portrait={portrait} key={book.id} book={book}>
                   {shelfType && s ? (
-                    <ShelfAction mt={3} bookID={book.id} shelfID={s.id}>
-                      {s.text}
-                    </ShelfAction>
+                    <NakedButton
+                      text={s.text}
+                      mt={3}
+                      book={book}
+                      shelf={s.id}
+                    />
                   ) : (
                     ''
                   )}

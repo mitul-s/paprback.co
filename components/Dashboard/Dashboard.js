@@ -1,19 +1,34 @@
-import { Box, Text, Center, Heading, Link, SimpleGrid, Spinner, Skeleton } from "@chakra-ui/core"
+import { Box, Center, Heading, Link, Grid, GridItem, Spinner, Skeleton } from "@chakra-ui/core"
 import BookCard from "../BookCard"
 import DashCard from './DashCard';
 import { AuthHeader } from "./Header";
 
 import useUser from "@/utils/hooks/useUser"
 import useShelf from '@/utils/hooks/useShelf';
-import useSWR from 'swr';
-import fetcher from '@/utils/fetcher';
-import { apifetch } from '@/utils/fetch';
-import ShelfAction from "@/components/ShelfAction";
+
+import NextLink from "next/link"
+import { NakedButton } from "../Shelves/Buttons";
+
+const EmptyState = () => {
+  return (
+    <Center rounded="xl" p={5} textAlign="center" bg="white" h="20vh">
+      You're not reading any books at the moment! Enjoy the break.
+    </Center>
+  )
+}
+
+const EmptyStateRL = ({ ...rest }) => {
+  return (
+    <Center rounded="xl" p={5} textAlign="center" bg="white" h="20vh" {...rest}>
+      This is where you'll see your books to read.
+    </Center>
+  );
+};
 
 const Dashboard = ({ user }) => {
 
   const { user: data, isLoading, isError } = useUser(user);
-  const { shelf: shelves } = useShelf(data);
+  const { shelf: shelves = [], isLoading: isLoadingShelf } = useShelf(data);
   
   if (isLoading) {
     return (
@@ -28,7 +43,7 @@ const Dashboard = ({ user }) => {
   }
 
 
-  let s = {};
+  let s = [];
   if (shelves) {
     s = {
       cr: shelves.currently_reading,
@@ -46,24 +61,25 @@ const Dashboard = ({ user }) => {
               Currently
             </Heading>
             <>
-              {shelves ? (
+              {shelves && !isLoadingShelf ? (
                 s.cr ? (
                   <>
                     <BookCard portrait={true} book={s.cr[0]}>
-                      <ShelfAction
+                      <NakedButton
                         mt={3}
-                        bookID={s.cr[0].id}
-                        shelfID={'previously_read'}
+                        book={s.cr[0]}
+                        shelf="previously_read"
+                        text="Mark as complete"
                       >
                         Mark as completed
-                      </ShelfAction>
+                      </NakedButton>
                     </BookCard>
                   </>
                 ) : (
-                  "You're currently reading anything!"
+                  <EmptyState />
                 )
               ) : (
-                <Skeleton h="10vh" />
+                <Skeleton h="20vh" />
               )}
             </>
           </Box>
@@ -76,22 +92,34 @@ const Dashboard = ({ user }) => {
               mb={3}
             >
               <Heading fontSize="2xl">Up Next</Heading>
-              <Link w="max-content">Show all</Link>
+              {s.rl ? (
+                <NextLink href={`/user/${user.username}/shelves/want-to-read`}>
+                  <Link w="max-content">Show all</Link>
+                </NextLink>
+              ) : (
+                ''
+              )}
             </Box>
             <Box>
-              <SimpleGrid columns={2} spacing={4}>
-                {shelves ? (
-                  <>
-                    <DashCard book={s.rl[0]} />
-                    <DashCard book={s.rl[10]} />
-                  </>
+              <Grid templateColumns="repeat(2, 1fr)" gap={4}>
+                {shelves && !isLoadingShelf ? (
+                  s.rl ? (
+                    <>
+                      <DashCard book={s.rl[0]} />
+                      <DashCard book={s.rl[1]} />
+                    </>
+                  ) : (
+                    <GridItem colSpan={2}>
+                      <EmptyStateRL />
+                    </GridItem>
+                  )
                 ) : (
                   <>
-                    <Skeleton h="10vh" />
-                    <Skeleton h="10vh" />
+                    <Skeleton h="20vh" />
+                    <Skeleton h="20vh" />
                   </>
                 )}
-              </SimpleGrid>
+              </Grid>
             </Box>
           </Box>
         </Box>
@@ -100,3 +128,6 @@ const Dashboard = ({ user }) => {
 }
 
 export default Dashboard;
+
+
+

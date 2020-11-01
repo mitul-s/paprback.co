@@ -23,3 +23,24 @@
   flex-grow: 999;
   min-width: calc(50% - 1rem);
 }
+
+/* .expandBtn {
+  padding-right: 0px !important; Remove default padding
+} */
+
+/* .expandBtn span {
+  max-width: 0;
+  display: inline-flex;
+  white-space: nowrap;
+  transition: max-width 450ms ease-in-out, padding-right 0.45s;
+  overflow: hidden;
+  padding-left: 0px; 
+  margin-right: -10px !important;
+ 
+} */
+
+
+/* .expandBtn:hover span, .expandBtn:focus span {
+max-width: 200px !important; 
+  padding-right: 10px !important; 
+} */

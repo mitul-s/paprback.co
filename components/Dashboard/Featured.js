@@ -41,7 +41,9 @@ const Featured = () => {
             b.book
               .filter((book) => book !== undefined)
               .map((i) => {
-                return <BookCard key={i.id} book={i} portrait={true} />;
+                return (
+                  <BookCard key={i.id} book={i} portrait={true} />
+                );
               })
           ) : (
             <>

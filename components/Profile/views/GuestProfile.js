@@ -1,4 +1,4 @@
-import { Box, Text, Image, Heading } from "@chakra-ui/core"
+import { Box, Center, Text, Image, Heading } from "@chakra-ui/core"
 import CoreShell from "@/components/CoreShell"
 import Shelves from '@/components/Profile/Shelves';
 
@@ -6,37 +6,31 @@ const GuestProfile = ({ u, s, loading, username }) => {
     return (
       <>
         <CoreShell>
-          <Box
+          <Center
             bg="white"
             minH="20vh"
             p={5}
-            display="flex"
-            justifyContent="center"
-            placeItems="center"
           >
             <Box textAlign="center">
-              <Box
+              <Center
                 mb={3}
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
               >
                 <Image
                   rounded="100%"
                   border="3px solid"
-                  borderColor="teal.500"
+                  borderColor="brand.900"
                   fallbackSrc="https://via.placeholder.com/150x150"
                 />
-              </Box>
+              </Center>
               <Heading fontSize="lg">
                 {u.firstName} {u.lastName}
               </Heading>
               <Heading fontSize="md" fontWeight="normal">
-                hi
+                @{username}
               </Heading>
               <Text>{u.bio}</Text>
             </Box>
-          </Box>
+          </Center>
           <Shelves
             title="Currently"
             subheading="Books you're reading at the moment"

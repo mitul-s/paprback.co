@@ -7,7 +7,7 @@ import { useAuth } from '@/lib/auth';
 
 const AuthMenu = ({ user, logout }) => {
   return (
-    <Menu placement="bottom-start">
+    <Menu placement="bottom-end">
       <MenuButton
         as={Button}
         rightIcon={
@@ -27,6 +27,9 @@ const AuthMenu = ({ user, logout }) => {
         {user.username}
       </MenuButton>
       <MenuList>
+        <NextLink href={`/`} passHref>
+          <MenuItem>Home</MenuItem>
+        </NextLink>
         <NextLink href={`/user/${user.username}`} passHref>
           <MenuItem>Profile</MenuItem>
         </NextLink>
@@ -51,7 +54,7 @@ const AuthNav = ({ user, logout }) => (
 const GuestNav = (
     <>
         <NextLink href="/signin" passHref>
-            <Button variant="ghost" mr={4}>
+            <Button variant="ghost" mr={2}>
                 Sign In
             </Button>
         </NextLink>
@@ -69,9 +72,10 @@ const Navigation = () => {
     <>
       <Flex
         backgroundColor="white"
-        mb={[8,12]}
+        mb={[8, 12]}
         w="full"
-        borderTop="5px solid #0AF5F4"
+        borderTop="5px solid"
+        borderColor="primary.indigo"
       >
         <Flex
           alignItems="center"
@@ -90,10 +94,15 @@ const Navigation = () => {
               </Link>
             </NextLink>
           </Flex>
-          <Flex justifyContent="center" alignItems="center" w="5xl" mx={{ base: '0', md: 10 }}>
-            <SearchBar/>
+          <Flex
+            justifyContent="center"
+            alignItems="center"
+            w="5xl"
+            mx={{ base: '0', md: 10 }}
+          >
+            <SearchBar />
           </Flex>
-          <Flex justifyContent="center" alignItems="center">
+          <Flex justifyContent="center" alignItems="center" ml={[4, null, 0]}>
             {user ? <AuthNav logout={logout} user={user} /> : GuestNav}
           </Flex>
         </Flex>

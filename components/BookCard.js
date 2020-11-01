@@ -23,7 +23,12 @@ const BookCard = ({ book, portrait, children, ...rest }) => {
 
     return (
       <>
-        <Box bg="white" display={{ md: !portrait ? 'flex' : '' }} {...rest}>
+        <Box
+          rounded="md"
+          bg="white"
+          display={{ md: !portrait ? 'flex' : '' }}
+          {...rest}
+        >
           <Box
             flexShrink="0"
             bg={color}
@@ -32,7 +37,8 @@ const BookCard = ({ book, portrait, children, ...rest }) => {
             alignItems="center"
             justifyContent="center"
             minHeight={{ base: 250, md: 200 }}
-            shadow="sm"
+            // shadow="sm"
+            rounded="md"
           >
             <Image
               width={{ md: portrait ? '' : 40 }}
@@ -66,9 +72,11 @@ const BookCard = ({ book, portrait, children, ...rest }) => {
             </NextLink>
             <Text mt={1} color="gray.600" fontSize="md">
               {b.authors ? 'by' : ''}{' '}
-              {b.authors.length ? b.authors.map((a, i) => (
-                <span key={i}>{(i ? ', ' : '') + a}</span>
-              )) : ''}
+              {b.authors.length
+                ? b.authors.map((a, i) => (
+                    <span key={i}>{(i ? ', ' : '') + a}</span>
+                  ))
+                : ''}
             </Text>
             <Text
               mt={2}
@@ -78,15 +86,7 @@ const BookCard = ({ book, portrait, children, ...rest }) => {
               placeItems="center"
             >
               <Icon mr={1}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                >
-                  <path fill="none" d="M0 0h24v24H0z" />
-                  <path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928L12 18.26zm0-2.292l4.247 2.377-.949-4.773 3.573-3.305-4.833-.573L12 5.275l-2.038 4.42-4.833.572 3.573 3.305-.949 4.773L12 15.968z" />
-                </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z" fill="rgba(0,0,0,1)"/></svg>
               </Icon>
               {b.ratings.count > 0
                 ? `${b.ratings.avg} (${b.ratings.count} Ratings)`
