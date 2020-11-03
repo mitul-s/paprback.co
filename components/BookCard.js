@@ -17,7 +17,7 @@ const BookCard = ({ book, portrait, children, ...rest }) => {
         avg: book.volumeInfo.averageRating
       },
       img: book.volumeInfo.imageLinks
-        ? book.volumeInfo.imageLinks.thumbnail
+        ? book.volumeInfo.imageLinks.thumbnail.replace('http://', 'https://')
         : ''
     };
 

@@ -21,8 +21,6 @@ const useShelfAction = (user) => {
         }
       })
       .then(() => {
-        // let x = data[update.to_shelf];
-        // let y = x.unshift(book);
         mutate(
           `${apifetch}/${user.user_id}/shelves`,
           {
@@ -49,7 +47,7 @@ const useShelfAction = (user) => {
           title: 'Hm, there was an error',
           description: err.message,
           status: 'error',
-          duration: 5000,
+          // duration: 5000,
           isClosable: true
         });
       });

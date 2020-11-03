@@ -5,9 +5,9 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: "brand.peach"
-      },
-    },
+        bg: 'brand.peach'
+      }
+    }
   },
   colors: {
     primary: {
@@ -17,11 +17,11 @@ const theme = extendTheme({
       900: 'red',
       800: '#153e75',
       700: '#2a69ac',
-      peach: "#F6F5F4"
+      peach: '#F6F5F4'
     }
   },
   fonts: {
-    heading: 'Inter',
+    heading: 'Comfortaa',
     body: 'Inter'
   },
   fontWeights: {
