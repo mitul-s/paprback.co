@@ -64,12 +64,13 @@ const Dashboard = ({ user }) => {
               {shelves && !isLoadingShelf ? (
                 s.cr ? (
                   <>
-                    <BookCard portrait={true} book={s.cr[0]}>
+                    <BookCard portrait={true} book={s.cr[s.cr.length - 1]}>
                       <NakedButton
                         mt={3}
-                        book={s.cr[0]}
+                        book={s.cr[s.cr.length - 1]}
                         shelf="previously_read"
                         text="Mark as complete"
+                        fromShelf="currently_reading"
                       >
                         Mark as completed
                       </NakedButton>

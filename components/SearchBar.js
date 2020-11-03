@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import _ from "../node_modules/lodash";
 import router from "next/router";
 import { Icon, InputGroup, Input, InputLeftElement } from "@chakra-ui/core"
@@ -32,7 +32,7 @@ const SearchBar = () => {
           />
           <Input 
             type="text" 
-            placeholder="Search for a book..." 
+            placeholder="Seach for a book..." 
             onChange={(e) => handleChange(e)}
           />
         </InputGroup>

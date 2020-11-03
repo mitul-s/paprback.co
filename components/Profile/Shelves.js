@@ -25,7 +25,8 @@ const Shelves = ({ title, subheading, shelf, user, shelfType, portrait, username
   if(shelfType === 'cr') {
     s = {
       id: 'previously_read',
-      text: 'Mark as complete'
+      text: 'Mark as complete',
+      from: "currently_reading"
     }
   }
 
@@ -39,16 +40,19 @@ const Shelves = ({ title, subheading, shelf, user, shelfType, portrait, username
     s = {
       id: 'currently_reading',
       text: 'Mark as reading',
+      from: 'want_to_read',
     };
   }
 
+
+  console.log(shelf)
 
 
 
     return (
       <Box {...rest}>
         <ShelfHeading title={title} subheading={subheading} />
-        {shelf ? (
+        {shelf && shelf.length !== 0 ? (
           <Grid
             minH="20vh"
             gap={4}
@@ -65,6 +69,7 @@ const Shelves = ({ title, subheading, shelf, user, shelfType, portrait, username
                       mt={3}
                       book={book}
                       shelf={s.id}
+                      fromShelf={s.from}
                     />
                   ) : (
                     ''

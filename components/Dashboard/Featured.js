@@ -7,7 +7,11 @@ import BookCard from "../BookCard";
 const Featured = () => {
 
     const { data } = useSWR(`${apifetch}/nyt-top-ten`, fetcher, {
-      revalidateOnFocus: false
+      revalidateOnFocus: false,
+      refreshWhenOffline: false,
+      refreshWhenHidden: false,
+      refreshInterval: 0,
+      dedupingInterval: 1000000,
     });
     let b = {};
     if(data){

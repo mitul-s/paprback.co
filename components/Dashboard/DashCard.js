@@ -44,6 +44,7 @@ const DashCard = ({ book, user, ...rest }) => {
               w="max-content"
               book={book}
               shelf="currently_reading"
+              fromShelf="want_to_read"
             >
               Add to your reading list
             </NakedButton>

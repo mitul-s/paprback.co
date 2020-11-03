@@ -1,15 +1,19 @@
 import React, { useState } from "react"
-import { apipost } from "@/utils/fetch";
+import { apifetch, apipost } from "@/utils/fetch";
 import { useToast } from "@chakra-ui/core";
+import useSWR, { mutate } from "swr";
+import useShelf from '@/utils/hooks/useShelf';
+import fetcher from "@/utils/fetcher";
 
 const useShelfAction = (user) => {
     
-const [ loading, setLoading ] = useState(false);
-const toast = useToast();
-  
-  
-  const addToShelf = async (update) => {
+  const [ loading, setLoading ] = useState(false);
+  const toast = useToast();
+  const { data } = useSWR(`${apifetch}/${user.user_id}/shelves`, fetcher);
+
+  const addToShelf = async (update, book, fromShelf) => {
     setLoading(true);
+      
     return apipost
       .patch(`/${user.user_id}/shelves/exclusive`, update, {
         headers: {
@@ -17,7 +21,19 @@ const toast = useToast();
         }
       })
       .then(() => {
-        // mutate(`${apifetch}/${user.user_id}/shelves`);
+        // let x = data[update.to_shelf];
+        // let y = x.unshift(book);
+        mutate(
+          `${apifetch}/${user.user_id}/shelves`,
+          {
+            ...data,
+            [update.to_shelf]: data[update.to_shelf].concat(book),
+            [fromShelf]: fromShelf
+              ? data[fromShelf].filter((i) => i.id !== update.volume_id)
+              : ''
+          },
+          false
+        );
         setLoading(false);
         toast({
           title: 'Complete!',

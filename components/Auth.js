@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useAuth } from "@/lib/auth";
-import { Box, Flex, Icon, Link, Stack, Heading, Text, FormControl, FormLabel, Input, FormErrorMessage, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, useDisclosure, useToast } from "@chakra-ui/core";
+import { Box, Flex, Icon, Link, Stack, Heading, Text, FormControl, FormLabel, Input, FormErrorMessage, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, useDisclosure, useToast, useMediaQuery } from "@chakra-ui/core";
 import { useForm } from 'react-hook-form';
 import NextLink from "next/link"
 
@@ -46,7 +46,6 @@ const AuthContent = ({ register, errors, type, loading, ...rest }) => {
               name="username"
               ref={register({
                 required: 'Please enter your username.',
-                minLength: 8,
                 pattern: {
                   value: /^[A-Za-z0-9]+$/i,
                   message: 'Username can only include letters and numbers.'
@@ -66,7 +65,8 @@ const AuthContent = ({ register, errors, type, loading, ...rest }) => {
               id="password"
               type="password"
               ref={register({
-                required: 'Please enter a password.'
+                minLength: 8,
+                required: 'Please enter a password, longer than 8 characters.'
               })}
             />
             <FormErrorMessage>
@@ -102,13 +102,15 @@ const AuthContent = ({ register, errors, type, loading, ...rest }) => {
 const AuthModal = ({ isOpen, onClose, loading, type, onSubmit }) => {
 
     const { handleSubmit, register, errors } = useForm();
+    const [ mobile ] = useMediaQuery("(min-width: 500px)")
 
     return (
       <Modal
         isOpen={isOpen}
         onClose={onClose}
-        size="md"
-        isCentered
+        size={mobile ? "md" : "full"}
+        motionPreset="slideInBottom"
+        isCentered={mobile ? true : false}
       >
         <ModalOverlay />
         <ModalContent>

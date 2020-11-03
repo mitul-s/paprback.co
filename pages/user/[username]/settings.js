@@ -63,6 +63,7 @@ const Settings = () => {
               }
           })
           .then(() => {
+            mutate(`${apifetch}/${user.user_id}/profile`);
             setLoading(false);
             toast({
               title: 'Complete!',

@@ -7,6 +7,10 @@ export default function useUser(user) {
     // const { data: id } = useSWR(user ? `${apifetch}/user/${user.username}` : null, fetcher)
     const { data, error, mutate } = useSWR(user ? `${apifetch}/${user.user_id}/profile` : null, fetcher, {
         revalidateOnFocus: false,
+        refreshWhenOffline: false,
+        refreshWhenHidden: false,
+        refreshInterval: 0,
+        dedupingInterval: 1000000,
     });
 
     return {

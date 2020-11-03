@@ -87,7 +87,6 @@ const Signup = () => {
             name="username"
             ref={register({
               required: 'Please enter your username.',
-              minLength: 8,
               pattern: {
                 value: /^[A-Za-z0-9]+$/i,
                 message: 'Username can only include letters and numbers.'
@@ -107,6 +106,7 @@ const Signup = () => {
             id="password"
             type="password"
             ref={register({
+              minLength: 8,
               required: 'Please enter a password.'
             })}
           />

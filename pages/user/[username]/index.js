@@ -21,8 +21,10 @@ const User = () => {
     
     const { user } = useAuth();
     const router = useRouter();
-    const { username } = router.query;
-    const { data: id, error } = useSWR(username ? `${apifetch}/user/${username}` : null, fetcher)
+    let { username } = router.query;
+    const { data: id, error } = useSWR(username ? `${apifetch}/user/${username}` : null, fetcher, {
+      revalidateOnFocus: false,
+    })
     const { data } = useSWR(() => `${apifetch}/${id.user_id}/profile`, fetcher)
     const { shelf: shelves } = useShelf(id);
     
@@ -32,7 +34,7 @@ const User = () => {
       toast({
         title: "User not found!",
         status: "error",
-        duration: 5000,
+        duration: 3000,
         isClosable: "true"
       })
       setTimeout(() => {

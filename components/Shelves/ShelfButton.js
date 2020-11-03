@@ -3,7 +3,7 @@ import { withAuthModal } from '@/components/Auth';
 import useShelfAction from '@/utils/hooks/useShelfAction';
 import { useAuth } from "@/lib/auth";
 
-export const ShelfButton = ({ text, book, shelf, openAuthModal, ...rest }) => {
+export const ShelfButton = ({ text, book, shelf, fromShelf, openAuthModal, ...rest }) => {
     
     const { user } = useAuth();
     
@@ -16,7 +16,7 @@ export const ShelfButton = ({ text, book, shelf, openAuthModal, ...rest }) => {
           volume_id: book.id,
           to_shelf: shelf
         };
-        addToShelf(data);
+        addToShelf(data, book, fromShelf);
       } else {
         openAuthModal();
       }

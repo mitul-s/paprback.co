@@ -74,7 +74,7 @@ const BookDetail = () => {
                   authors={book.authors}
                 />
                 <HStack my={4} spacing={4}>
-                  <ShelfButtonsContainer book={book} />
+                  <ShelfButtonsContainer book={data} />
                 </HStack>
                 <DetailBox desc={book.desc} detail={book.detail} />
               </Box>

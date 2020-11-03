@@ -3,11 +3,14 @@ import useSWR from 'swr';
 import fetcher from "@/utils/fetcher"
 import { apifetch } from "@/utils/fetch";
 import { CurrentlyReading, MarkAsFinished, SaveForLater } from '@/components/Shelves/Buttons';
+import useShelf from "@/utils/hooks/useShelf";
+import { Spinner } from "@chakra-ui/core";
 
 
 const ShelfButtonsContainer = ({ book }) => {
 
     const { user } = useAuth();
+    // const { shelves, isLoading } = useShelf(user);
     const { data: shelves, isLoading } = useSWR(user ? `${apifetch}/${user.user_id}/shelves` : null, fetcher)
 
 
@@ -15,8 +18,8 @@ const ShelfButtonsContainer = ({ book }) => {
       if (shelves.currently_reading && shelves.currently_reading.some((shelf) => shelf.id === book.id)) {
         return (
           <>
-            <MarkAsFinished book={book}  />
-            <SaveForLater book={book} />
+            <MarkAsFinished book={book} fromShelf="currently_reading" />
+            <SaveForLater book={book} fromShelf="currently_reading" />
             <p>Remove from shelf button to be added</p>
           </>
         ); 
@@ -25,8 +28,8 @@ const ShelfButtonsContainer = ({ book }) => {
      } if (shelves.want_to_read && shelves.want_to_read.some((shelf) => shelf.id === book.id)) {
         return (
           <>
-            <CurrentlyReading book={book}  />
-            <MarkAsFinished book={book} />
+            <CurrentlyReading book={book} fromShelf="want_to_read" />
+            <MarkAsFinished book={book} fromShelf="want_to_read" />
             <p>Remove from shelf button to be added</p>
           </>
         );
