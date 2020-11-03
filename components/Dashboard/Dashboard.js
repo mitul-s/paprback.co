@@ -62,7 +62,7 @@ const Dashboard = ({ user }) => {
             </Heading>
             <>
               {shelves && !isLoadingShelf ? (
-                s.cr ? (
+                s.cr && s.cr.length > 0 ? (
                   <>
                     <BookCard portrait={true} book={s.cr[s.cr.length - 1]}>
                       <NakedButton

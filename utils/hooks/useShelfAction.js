@@ -13,7 +13,6 @@ const useShelfAction = (user) => {
 
   const addToShelf = async (update, book, fromShelf) => {
     setLoading(true);
-      
     return apipost
       .patch(`/${user.user_id}/shelves/exclusive`, update, {
         headers: {
@@ -21,11 +20,13 @@ const useShelfAction = (user) => {
         }
       })
       .then(() => {
+        let x =
+          data[update.to_shelf] === undefined ? [] : data[update.to_shelf];
         mutate(
           `${apifetch}/${user.user_id}/shelves`,
           {
             ...data,
-            [update.to_shelf]: data[update.to_shelf].concat(book),
+            [update.to_shelf]: x.concat(book),
             [fromShelf]: fromShelf
               ? data[fromShelf].filter((i) => i.id !== update.volume_id)
               : ''
@@ -47,7 +48,7 @@ const useShelfAction = (user) => {
           title: 'Hm, there was an error',
           description: err.message,
           status: 'error',
-          // duration: 5000,
+          duration: 10000,
           isClosable: true
         });
       });
