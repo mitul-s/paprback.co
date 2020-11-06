@@ -7,7 +7,7 @@ export default function Cover ({ img, title, ...rest }) {
         bg="white"
         p={8}
         height="max-content"
-        rounded="lg"
+        rounded="xl"
         bg="purple.100"
 
         {...rest}
@@ -16,7 +16,7 @@ export default function Cover ({ img, title, ...rest }) {
           src={img}
           fallbackSrc={`https://via.placeholder.com/350x500?text=${title}`}
           shadow="xl"
-          rounded="md"
+          rounded="xl"
         />
       </Center>
     );   

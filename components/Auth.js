@@ -16,7 +16,7 @@ const AuthContent = ({ register, errors, type, loading, ...rest }) => {
               textAlign="center"
             >
               <Heading fontSize="lg">Paprback</Heading>
-              <Text>Sign up for an account</Text>
+              <Text>Sign up to build your shelf</Text>
             </Box>
           </Flex>
           <FormControl isInvalid={errors.email && errors.email.message}>
@@ -65,7 +65,10 @@ const AuthContent = ({ register, errors, type, loading, ...rest }) => {
               id="password"
               type="password"
               ref={register({
-                minLength: 8,
+                minLength: {
+                  value: 8,
+                  message: 'Password must be at least 8 characters long'
+                },
                 required: 'Please enter a password, longer than 8 characters.'
               })}
             />

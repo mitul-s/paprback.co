@@ -3,7 +3,7 @@ import { Box, Center, Heading, Text } from "@chakra-ui/core";
 const AuthHeader = ({ name }) => (
   <Box mb={8}>
     <Heading mb={3}>Welcome back{name ? `, ${name}` : '!'} 👋</Heading>
-    <Text>Here's what you need to know.</Text>
+    <Text>What would you like to read today?</Text>
   </Box>
 );
 

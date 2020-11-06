@@ -42,7 +42,7 @@ const User = () => {
       }, 1000)
     }
 
-    if(!data) return <FullSpinner />
+    if(!data || !shelves) return <FullSpinner />
 
     let u = {}
     let s = {}
@@ -67,7 +67,7 @@ const User = () => {
           <title>@{username} // Paprback</title>
         </Head>
         {user && user.username === username ? (
-          <AuthProfile u={u} s={s} username={username} />
+          <AuthProfile u={u} shelf={s} username={username} />
         ) : (
           <GuestProfile u={u} s={s} username={username} />
         )}

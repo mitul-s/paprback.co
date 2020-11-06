@@ -59,7 +59,7 @@ const GuestNav = (
             </Button>
         </NextLink>
         <NextLink href="/signup" passHref>
-            <Button>
+            <Button bg="primary.indigo" color="whiteAlpha.900" border="2px solid transparent">
                 Sign Up
             </Button>
         </NextLink>

@@ -25,7 +25,7 @@ const EmptyCard = () => {
 const DashCard = ({ book, user, ...rest }) => {
     return book ? (
       <>
-        <Box bg="white" p={4} minHeight="20vh" minW="0" {...rest}>
+        <Box bg="white" p={4} minHeight="20vh" minW="0" rounded="xl" {...rest}>
           <Stack>
             <NextLink href={`/book/${book.id}`}>
               <Heading

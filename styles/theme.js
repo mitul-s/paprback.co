@@ -1,11 +1,11 @@
 import { extendTheme } from "@chakra-ui/core";
-import { mode, Styles } from "@chakra-ui/theme-tools"
 
 const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: 'brand.peach'
+        // bg: 'brand.peach'
+        bg: "gray.100"
       }
     }
   },

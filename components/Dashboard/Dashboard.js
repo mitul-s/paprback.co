@@ -66,11 +66,13 @@ const Dashboard = ({ user }) => {
                   <>
                     <BookCard portrait={true} book={s.cr[s.cr.length - 1]}>
                       <NakedButton
-                        mt={3}
+                        mt={5}
                         book={s.cr[s.cr.length - 1]}
                         shelf="previously_read"
                         text="Mark as complete"
                         fromShelf="currently_reading"
+                        rounded="full"
+                        // boxShadow="0px 8px 16px rgba(58,111,175,0.2)"
                       >
                         Mark as completed
                       </NakedButton>
@@ -94,7 +96,7 @@ const Dashboard = ({ user }) => {
             >
               <Heading fontSize="2xl">Up Next</Heading>
               {s.rl ? (
-                <NextLink href={`/user/${user.username}/shelves/want-to-read`}>
+                <NextLink href={`/user/${user.username}/shelves/want_to_read`}>
                   <Link w="max-content">Show all</Link>
                 </NextLink>
               ) : (
