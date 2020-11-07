@@ -21,7 +21,8 @@ const theme = extendTheme({
     }
   },
   fonts: {
-    heading: 'Comfortaa',
+    // heading: 'Comfortaa',
+    heading: "Inter",
     body: 'Inter'
   },
   fontWeights: {

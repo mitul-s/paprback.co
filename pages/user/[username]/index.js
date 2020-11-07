@@ -51,7 +51,9 @@ const User = () => {
         firstName: data.first_name,
         lastName: data.last_name,
         bio: data.bio,
-      }
+        birthday: data.birthday,
+        location: data.location
+      };
 
       s = {
         cr: shelves.currently_reading,

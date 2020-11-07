@@ -1,7 +1,8 @@
 import React from "react";
 import NextLink from "next/link";
-import { Flex, Link, Avatar, Icon, Button, Menu, MenuList, MenuItem, MenuButton } from "@chakra-ui/core";
+import { Flex, Link, Avatar, Icon, Button, Menu, MenuList, MenuItem, MenuButton, MenuDivider } from "@chakra-ui/core";
 import SearchBar from "@/components/SearchBar";
+import { RiUser3Line, RiSettings2Line, RiHome2Line } from 'react-icons/ri';
 
 import { useAuth } from '@/lib/auth';
 
@@ -28,14 +29,15 @@ const AuthMenu = ({ user, logout }) => {
       </MenuButton>
       <MenuList>
         <NextLink href={`/`} passHref>
-          <MenuItem>Home</MenuItem>
+          <MenuItem icon={<RiHome2Line />}>Home</MenuItem>
         </NextLink>
         <NextLink href={`/user/${user.username}`} passHref>
-          <MenuItem>Profile</MenuItem>
+          <MenuItem icon={<RiUser3Line />}>Profile</MenuItem>
         </NextLink>
         <NextLink href={`/user/${user.username}/settings`}>
-          <MenuItem>Settings</MenuItem>
+          <MenuItem icon={<RiSettings2Line />}>Settings</MenuItem>
         </NextLink>
+        <MenuDivider />
         <MenuItem as="a" onClick={() => logout()}>
           Log out
         </MenuItem>

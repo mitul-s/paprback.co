@@ -2,7 +2,7 @@ import { Box, Center, Image, Heading, Text, Wrap, WrapItem, Tag, TagLeftIcon, Ta
 import { RiMapPin2Line, RiCakeLine, RiCalendarLine } from 'react-icons/ri';
 
 
-const UserDetails = ({ ...rest }) => {
+const UserDetails = ({ username, firstName, lastName, bio, img, location, birthday, ...rest }) => {
     return (
       <Box
         bg="white"
@@ -17,6 +17,7 @@ const UserDetails = ({ ...rest }) => {
         <Box>
           <Box rounded="full" w="max-content" mb={5} mt={-24} mx="auto">
             <Image
+              src={img}
               objectFit="cover"
               rounded="full"
               border="3px solid"
@@ -25,30 +26,33 @@ const UserDetails = ({ ...rest }) => {
             />
           </Box>
           <Box>
-            <Heading as="h3" fontSize="2xl">
-              Mitul Shah
+            <Heading as="h3" fontSize="2xl" lineHeight="shorter">
+              {firstName} {lastName}
             </Heading>
-            <Text color="gray.600">@mitul</Text>
+            <Text color="gray.600">@{username}</Text>
           </Box>
-          <Box mt={4}>
-            <Text fontSize="md">
-              Here's a long bio that I wrote all by myself
-            </Text>
+          <Box mt={3}>
+            <Text fontSize="md">{bio}</Text>
           </Box>
-          <Box mt={5} color="gray.500">
+          <Box mt={3} color="gray.500">
             <Wrap>
-              <WrapItem>
-                <Tag size="md" variant="ghost" p={0} fontWeight="normal">
-                  <TagLeftIcon boxSize="12px" as={RiMapPin2Line} />
-                  <TagLabel>Toronto</TagLabel>
-                </Tag>
-              </WrapItem>
+              {location ? (
+                <WrapItem>
+                  <Tag size="md" variant="ghost" p={0} fontWeight="normal">
+                    <TagLeftIcon boxSize="12px" as={RiMapPin2Line} />
+                    <TagLabel>Toronto</TagLabel>
+                  </Tag>
+                </WrapItem>
+              ) : (
+                ''
+              )}
+              {birthday ? 
               <WrapItem>
                 <Tag size="md" variant="ghost" p={0} fontWeight="normal">
                   <TagLeftIcon boxSize="12px" as={RiCakeLine} />
                   <TagLabel>September 12th</TagLabel>
                 </Tag>
-              </WrapItem>
+              </WrapItem> : ''}
               <WrapItem>
                 <Tag size="md" variant="ghost" p={0} fontWeight="normal">
                   <TagLeftIcon boxSize="12px" as={RiCalendarLine} />

@@ -35,7 +35,7 @@ const Details = ({ detail }) => {
 
 export default function DetailBox({ desc, detail = {}, ...rest }) {
     return (
-      <Box bg="white" p={5} {...rest}>
+      <Box bg="white" p={8} rounded="xl" {...rest}>
         {desc ? (
           <DescriptionText desc={desc} />
         ) : (

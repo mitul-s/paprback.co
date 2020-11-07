@@ -1,23 +1,24 @@
-import { Center, Image } from "@chakra-ui/core";
+import { Box, Center, Image } from "@chakra-ui/core";
 
 export default function Cover ({ img, title, ...rest }) {
     return (
-      <Center
-        w="full"
-        bg="white"
-        p={8}
-        height="max-content"
+      <Box
+        // w="full"
+        // p={8}
+        align="center"
+        py={10}
         rounded="xl"
-        bg="purple.100"
-
+        // bg="purple.100"
+        height="max-content"
         {...rest}
       >
         <Image
           src={img}
           fallbackSrc={`https://via.placeholder.com/350x500?text=${title}`}
           shadow="xl"
-          rounded="xl"
+          // rounded="xl"
+          w="3xs"
         />
-      </Center>
+      </Box>
     );   
 }

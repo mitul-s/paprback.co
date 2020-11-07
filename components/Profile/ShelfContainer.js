@@ -16,9 +16,7 @@ const ShelfContainer = ({ shelf, ...rest }) => {
         <Box>
         <ShelfHeader />
           <Grid>
-            {shelf.map((i) => {
-              return <BookCard book={i} />;
-            })}
+            {shelf ? (shelf.map((i) => {return <BookCard book={i} />})) : 'Empty shelf'}
           </Grid>
         </Box>
       </Box>
