@@ -1,4 +1,4 @@
-import { Box, Center, Heading, Text } from "@chakra-ui/core";
+import { Box, Center, Heading, Text } from "@chakra-ui/react";
 
 const AuthHeader = ({ name }) => (
   <Box mb={8}>

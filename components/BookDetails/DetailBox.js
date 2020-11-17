@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Divider, Heading, HStack, Text, Collapse, Center, Button } from "@chakra-ui/core";
+import { Box, Divider, Heading, HStack, Text, Collapse, Center, Button } from "@chakra-ui/react";
 
 const DescriptionText = ({ desc }) => {
     const [show, setShow] = useState(false);

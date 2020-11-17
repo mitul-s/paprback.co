@@ -11,12 +11,11 @@ import {
   FormLabel,
   FormErrorMessage,
   Stack,
-  Icon,
   Heading,
   Text,
   Link,
   useToast
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import { useForm } from 'react-hook-form';
 

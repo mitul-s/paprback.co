@@ -9,7 +9,7 @@ import FullSpinner from '@/components/FullSpinner';
 import { Cover, DetailBox, Titles, ShelfButtonsContainer } from "@/components/BookDetails"
 import s from "@/styles/Sidebar.module.css"
 
-import { Box, Center, Flex, HStack } from "@chakra-ui/core";
+import { Box, Center, Flex, HStack } from "@chakra-ui/react";
 import ShareBox from "@/components/BookDetails/ShareBox";
 
 const BookDetail = () => {

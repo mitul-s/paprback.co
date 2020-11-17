@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useAuth } from "@/lib/auth";
-import { Box, Flex, Icon, Link, Stack, Heading, Text, FormControl, FormLabel, Input, FormErrorMessage, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, useDisclosure, useToast, useMediaQuery } from "@chakra-ui/core";
+import { Box, Flex, Icon, Link, Stack, Heading, Text, FormControl, FormLabel, Input, FormErrorMessage, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, useDisclosure, useToast, useMediaQuery } from "@chakra-ui/react";
 import { useForm } from 'react-hook-form';
 import NextLink from "next/link"
 

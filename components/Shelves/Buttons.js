@@ -1,4 +1,4 @@
-import { Icon } from "@chakra-ui/core";
+import { Icon } from "@chakra-ui/react";
 import { RiBookmarkLine, RiPushpinLine, RiCheckDoubleLine } from 'react-icons/ri';
 import ShelfButton from '@/components/Shelves/ShelfButton';
 

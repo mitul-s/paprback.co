@@ -1,22 +1,27 @@
-import { Box, Heading, Text, Grid, } from "@chakra-ui/core";
+import useShelf from "@/utils/hooks/useShelf"
+
+import { Box, Heading, Text, Grid, Skeleton, } from "@chakra-ui/react";
 import BookCard from "../BookCard";
 
-export const ShelfHeader = () => (
-    <Box mb={5} borderLeft="2px solid black" pl={8} borderColor="purple.500">
-      <Heading size="lg" mb={2} color="purple.500">
-        Currently Reading
+export const ShelfHeader = ({ heading, description }) => (
+    <Box mb={5}>
+      <Heading size="sm" textTransform="uppercase" color="gray.500" fontWeight="medium" letterSpacing="-0.3px" mb={2}>
+        {heading}
       </Heading>
-      <Text>Here's a short text that describes the shelf</Text>
+      <Text>{description}</Text>
     </Box>
 )
 
-const ShelfContainer = ({ shelf, ...rest }) => {
+const ShelfContainer = ({ id, shelfMap, listLength, heading, description, ...rest }) => {
+
+  const { shelf, isLoading } = useShelf(id);
+  
     return (
       <Box {...rest}>
-        <Box>
-        <ShelfHeader />
-          <Grid>
-            {shelf ? (shelf.map((i) => {return <BookCard book={i} />})) : 'Empty shelf'}
+        <Box mb={10}>
+        <ShelfHeader heading={heading} description={description} />
+          <Grid gap={4}>
+            {isLoading ? <Skeleton h="10vh"/> : shelf && !isLoading ? (shelf[shelfMap].slice(0,listLength).map((i) => {return <BookCard book={i} />})) : 'Empty shelf'}
           </Grid>
         </Box>
       </Box>

@@ -1,4 +1,4 @@
-import { Box, Image, Link, Text, Icon } from "@chakra-ui/core"
+import { Box, Image, Link, Text, Icon } from "@chakra-ui/react"
 import NextLink from "next/link"
 
 const BookCard = ({ book, portrait, children, ...rest }) => {

@@ -1,7 +1,7 @@
-import { Box, Heading, Image, Spinner, Text, useToast } from "@chakra-ui/core";
+import { Box, Heading, Image, Spinner, Text, useToast } from "@chakra-ui/react";
 import FullSpinner from "@/components/FullSpinner";
-
-import AuthProfile from "@/components/Profile/views/AuthProfile";
+import AuthProfile from "@/components/Profile/Auth/Profile"
+// import AuthProfile from '@/components/Profile/Auth/Profile';
 import GuestProfile from '@/components/Profile/views/GuestProfile';
 
 import Head from 'next/head';
@@ -14,8 +14,6 @@ import fetcher from '@/utils/fetcher';
 import { apifetch } from '@/utils/fetch';
 
 
-import useShelf from "@/utils/hooks/useShelf"
-
 
 const User = () => {
     
@@ -26,7 +24,6 @@ const User = () => {
       revalidateOnFocus: false,
     })
     const { data } = useSWR(() => `${apifetch}/${id.user_id}/profile`, fetcher)
-    const { shelf: shelves } = useShelf(id);
     
 
     const toast = useToast();
@@ -42,26 +39,7 @@ const User = () => {
       }, 1000)
     }
 
-    if(!data || !shelves) return <FullSpinner />
-
-    let u = {}
-    let s = {}
-    if(data && shelves) {
-      u = {
-        firstName: data.first_name,
-        lastName: data.last_name,
-        bio: data.bio,
-        birthday: data.birthday,
-        location: data.location
-      };
-
-      s = {
-        cr: shelves.currently_reading,
-        rl: shelves.want_to_read,
-        pr: shelves.previously_read,
-      }
-    }
-
+    if(!data) return <FullSpinner />
 
     return (
       <>
@@ -69,9 +47,9 @@ const User = () => {
           <title>@{username} // Paprback</title>
         </Head>
         {user && user.username === username ? (
-          <AuthProfile u={u} shelf={s} username={username} />
+          <AuthProfile id={id} u={data} username={username} />
         ) : (
-          <GuestProfile u={u} s={s} username={username} />
+          ''
         )}
       </>
     );

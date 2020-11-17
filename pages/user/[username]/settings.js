@@ -26,7 +26,7 @@ import {
   Stack,
   Textarea,
   useToast
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 

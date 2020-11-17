@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { apifetch, apipost } from "@/utils/fetch";
-import { useToast } from "@chakra-ui/core";
+import { useToast } from "@chakra-ui/react";
 import useSWR, { mutate } from "swr";
 import useShelf from '@/utils/hooks/useShelf';
 import fetcher from "@/utils/fetcher";

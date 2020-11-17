@@ -1,4 +1,4 @@
-import { Box, Center, Image, Heading, Text, Wrap, WrapItem, Tag, TagLeftIcon, TagLabel } from "@chakra-ui/core";
+import { Box, Center, Image, Heading, Text, Wrap, WrapItem, Tag, TagLeftIcon, TagLabel } from "@chakra-ui/react";
 import { RiMapPin2Line, RiCakeLine, RiCalendarLine } from 'react-icons/ri';
 
 

@@ -1,4 +1,4 @@
-import { Box, Center, Image } from "@chakra-ui/core";
+import { Box, Center, Image } from "@chakra-ui/react";
 
 export default function Cover ({ img, title, ...rest }) {
     return (

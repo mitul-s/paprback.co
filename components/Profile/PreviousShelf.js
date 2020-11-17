@@ -1,4 +1,4 @@
-import { Box, HStack, Heading, Text } from "@chakra-ui/core"
+import { Box, HStack, Heading, Text } from "@chakra-ui/react"
 import BookCard from "../BookCard";
 
 const PreviousShelf = ({ shelf }) => {

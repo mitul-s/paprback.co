@@ -4,7 +4,7 @@ import fetcher from "@/utils/fetcher"
 import { apifetch } from "@/utils/fetch";
 import { CurrentlyReading, MarkAsFinished, SaveForLater } from '@/components/Shelves/Buttons';
 import useShelf from "@/utils/hooks/useShelf";
-import { Spinner } from "@chakra-ui/core";
+import { Spinner } from "@chakra-ui/react";
 
 
 const ShelfButtonsContainer = ({ book }) => {

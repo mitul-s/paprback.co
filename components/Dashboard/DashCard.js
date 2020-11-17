@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Button, Stack, Text } from '@chakra-ui/core';
+import { Box, Flex, Heading, Button, Stack, Text } from '@chakra-ui/react';
 import NextLink from "next/link"
 import { NakedButton } from '../Shelves/Buttons';
 

@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Button } from "@chakra-ui/core"
+import { Box, Heading, Text, Button } from "@chakra-ui/react"
 import { RiArrowRightLine } from 'react-icons/ri';
 import { withAuthModal } from '@/components/Auth';
 

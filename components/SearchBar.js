@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import _ from "../node_modules/lodash";
 import router from "next/router";
-import { Icon, InputGroup, Input, InputLeftElement } from "@chakra-ui/core"
+import { Icon, InputGroup, Input, InputLeftElement } from "@chakra-ui/react"
 
 const SearchIcon = () => (
   <Icon>

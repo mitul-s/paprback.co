@@ -1,5 +1,5 @@
 import CoreShell from "./CoreShell"
-import { Spinner } from "@chakra-ui/core";
+import { Spinner } from "@chakra-ui/react";
 
 export default function FullSpinner() {
     return (

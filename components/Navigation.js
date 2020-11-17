@@ -1,6 +1,6 @@
 import React from "react";
 import NextLink from "next/link";
-import { Flex, Link, Avatar, Icon, Button, Menu, MenuList, MenuItem, MenuButton, MenuDivider } from "@chakra-ui/core";
+import { Flex, Link, Avatar, Icon, Button, Menu, MenuList, MenuItem, MenuButton, MenuDivider } from "@chakra-ui/react";
 import SearchBar from "@/components/SearchBar";
 import { RiUser3Line, RiSettings2Line, RiHome2Line } from 'react-icons/ri';
 

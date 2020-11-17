@@ -1,4 +1,4 @@
-import { Box, Center, Heading, Link, Grid, GridItem, Spinner, Skeleton } from "@chakra-ui/core"
+import { Box, Center, Heading, Link, Grid, GridItem, Spinner, Skeleton } from "@chakra-ui/react"
 import BookCard from "../BookCard"
 import DashCard from './DashCard';
 import { AuthHeader } from "./Header";

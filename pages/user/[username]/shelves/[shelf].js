@@ -1,5 +1,5 @@
 import CoreShell from "@/components/CoreShell"
-import { Heading, Center, Stack, useToast } from "@chakra-ui/core";
+import { Heading, Center, Stack, useToast } from "@chakra-ui/react";
 
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
