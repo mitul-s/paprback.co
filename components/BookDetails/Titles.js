@@ -5,9 +5,6 @@ export default function Titles ({ title, subtitle, authors = [], ...rest }) {
     return (
       <>
         <Box {...rest}>
-            <Tag bg="pink.100" mb={3}>
-              <TagLabel>Shelf State</TagLabel>
-            </Tag>
             <Heading as="h3">{title}</Heading>
             <Heading fontSize="lg">{subtitle}</Heading>
             <Text fontSize="md">

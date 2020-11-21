@@ -32,6 +32,8 @@ const AuthProfile = ({ u, id, username }) => {
                   description="This is a book"
                   shelfMap="currently_reading"
                   listLength="2"
+                  username={username}
+                  auth={true}
                 />
                 <ShelfContainer
                   id={id}
@@ -39,6 +41,8 @@ const AuthProfile = ({ u, id, username }) => {
                   description="This is a book"
                   shelfMap="want_to_read"
                   listLength="3"
+                  username={username}
+                  auth={true}
                 />
                 <ShelfContainer
                   id={id}
@@ -46,6 +50,8 @@ const AuthProfile = ({ u, id, username }) => {
                   description="This is a book"
                   shelfMap="previously_read"
                   listLength="4"
+                  username={username}
+                  auth={true}
                 />
               </Box>
             </Box>

@@ -1,8 +1,7 @@
 import { Box, Heading, Image, Spinner, Text, useToast } from "@chakra-ui/react";
 import FullSpinner from "@/components/FullSpinner";
 import AuthProfile from "@/components/Profile/Auth/Profile"
-// import AuthProfile from '@/components/Profile/Auth/Profile';
-import GuestProfile from '@/components/Profile/views/GuestProfile';
+import GuestProfile from '@/components/Profile/Guest/Profile';
 
 import Head from 'next/head';
 
@@ -47,9 +46,9 @@ const User = () => {
           <title>@{username} // Paprback</title>
         </Head>
         {user && user.username === username ? (
-          <AuthProfile id={id} u={data} username={username} />
+          <AuthProfile id={id} u={data} username={username} auth={true} />
         ) : (
-          ''
+          <GuestProfile id={id} u={data} username={username} />
         )}
       </>
     );

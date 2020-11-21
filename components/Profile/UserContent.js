@@ -3,6 +3,7 @@ import { RiMapPin2Line, RiCakeLine, RiCalendarLine } from 'react-icons/ri';
 
 
 const UserDetails = ({ username, firstName, lastName, bio, img, location, birthday, ...rest }) => {
+  let bday = new Date(birthday);
     return (
       <Box
         bg="white"
@@ -40,7 +41,7 @@ const UserDetails = ({ username, firstName, lastName, bio, img, location, birthd
                 <WrapItem>
                   <Tag size="md" variant="ghost" p={0} fontWeight="normal">
                     <TagLeftIcon boxSize="12px" as={RiMapPin2Line} />
-                    <TagLabel>Toronto</TagLabel>
+                    <TagLabel>{location}</TagLabel>
                   </Tag>
                 </WrapItem>
               ) : (
@@ -50,15 +51,15 @@ const UserDetails = ({ username, firstName, lastName, bio, img, location, birthd
               <WrapItem>
                 <Tag size="md" variant="ghost" p={0} fontWeight="normal">
                   <TagLeftIcon boxSize="12px" as={RiCakeLine} />
-                  <TagLabel>September 12th</TagLabel>
+                  <TagLabel>{bday.toDateString()}</TagLabel>
                 </Tag>
               </WrapItem> : ''}
-              <WrapItem>
+              {/* <WrapItem>
                 <Tag size="md" variant="ghost" p={0} fontWeight="normal">
                   <TagLeftIcon boxSize="12px" as={RiCalendarLine} />
                   <TagLabel>August 1st, 2020</TagLabel>
                 </Tag>
-              </WrapItem>
+              </WrapItem> */}
             </Wrap>
           </Box>
         </Box>
