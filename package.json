@@ -8,16 +8,18 @@
     "start": "next start"
   },
   "dependencies": {
-    "@chakra-ui/core": "^1.0.0-rc.8",
-    "@chakra-ui/icons": "^1.0.0-rc.8",
+    "@chakra-ui/icons": "^1.0.0",
+    "@chakra-ui/react": "^1.0.0",
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
     "axios": "^0.20.0",
     "framer-motion": "^2.9.4",
     "js-cookie": "^2.2.1",
-    "next": "^10.0.0",
+    "next": "^10.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-hook-form": "^6.10.0",
+    "react-hook-form": "^6.11.2",
     "react-icons": "^3.11.0",
-    "swr": "^0.3.7"
+    "swr": "^0.3.8"
   }
 }

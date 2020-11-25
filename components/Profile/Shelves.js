@@ -1,4 +1,4 @@
-import { Box, Heading, Center, Skeleton, Text, Grid } from "@chakra-ui/core"
+import { Box, Heading, Center, Skeleton, Text, Grid } from "@chakra-ui/react"
 import BookCard from "../BookCard"
 // import ShelfAction from '@/components/ShelfAction';
 import { NakedButton } from "../Shelves/Buttons";

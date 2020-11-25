@@ -1,8 +1,7 @@
-import { Box, Heading, Image, Spinner, Text, useToast } from "@chakra-ui/core";
+import { Box, Heading, Image, Spinner, Text, useToast } from "@chakra-ui/react";
 import FullSpinner from "@/components/FullSpinner";
-
-import AuthProfile from "@/components/Profile/views/AuthProfile";
-import GuestProfile from '@/components/Profile/views/GuestProfile';
+import AuthProfile from "@/components/Profile/Auth/Profile"
+import GuestProfile from '@/components/Profile/Guest/Profile';
 
 import Head from 'next/head';
 
@@ -14,8 +13,6 @@ import fetcher from '@/utils/fetcher';
 import { apifetch } from '@/utils/fetch';
 
 
-import useShelf from "@/utils/hooks/useShelf"
-
 
 const User = () => {
     
@@ -26,7 +23,6 @@ const User = () => {
       revalidateOnFocus: false,
     })
     const { data } = useSWR(() => `${apifetch}/${id.user_id}/profile`, fetcher)
-    const { shelf: shelves } = useShelf(id);
     
 
     const toast = useToast();
@@ -44,32 +40,15 @@ const User = () => {
 
     if(!data) return <FullSpinner />
 
-    let u = {}
-    let s = {}
-    if(data && shelves) {
-      u = {
-        firstName: data.first_name,
-        lastName: data.last_name,
-        bio: data.bio,
-      }
-
-      s = {
-        cr: shelves.currently_reading,
-        rl: shelves.want_to_read,
-        pr: shelves.previously_read,
-      }
-    }
-
-
     return (
       <>
         <Head>
           <title>@{username} // Paprback</title>
         </Head>
         {user && user.username === username ? (
-          <AuthProfile u={u} s={s} username={username} />
+          <AuthProfile id={id} u={data} username={username} auth={true} />
         ) : (
-          <GuestProfile u={u} s={s} username={username} />
+          <GuestProfile id={id} u={data} username={username} />
         )}
       </>
     );

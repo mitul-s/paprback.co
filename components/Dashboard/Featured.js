@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Grid, Skeleton } from "@chakra-ui/core";
+import { Box, Heading, Text, Grid, Skeleton } from "@chakra-ui/react";
 import useSWR from 'swr'
 import { apifetch } from '@/utils/fetch'
 import fetcher from '@/utils/fetcher';

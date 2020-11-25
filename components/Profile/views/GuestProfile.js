@@ -1,4 +1,4 @@
-import { Box, Center, Text, Image, Heading } from "@chakra-ui/core"
+import { Box, Center, Text, Image, Heading } from "@chakra-ui/react"
 import CoreShell from "@/components/CoreShell"
 import Shelves from '@/components/Profile/Shelves';
 

@@ -1,4 +1,4 @@
-import { Box, Image, Link, Text, Icon } from "@chakra-ui/core"
+import { Box, Image, Link, Text, Icon } from "@chakra-ui/react"
 import NextLink from "next/link"
 
 const BookCard = ({ book, portrait, children, ...rest }) => {
@@ -80,7 +80,7 @@ const BookCard = ({ book, portrait, children, ...rest }) => {
                   ))
                 : ''}
             </Text>
-            <Text
+            {b.ratings.count > 0 ? (<Text
               mt={2}
               color="gray.500"
               fontSize="sm"
@@ -101,10 +101,8 @@ const BookCard = ({ book, portrait, children, ...rest }) => {
                   />
                 </svg>
               </Icon>
-              {b.ratings.count > 0
-                ? `${b.ratings.avg} (${b.ratings.count} Ratings)`
-                : 'No ratings'}
-            </Text>
+              {b.ratings.avg} ({b.ratings.count} Ratings)
+            </Text>) : ''}
             {children}
           </Box>
         </Box>

@@ -1,26 +1,26 @@
 import CoreShell from "@/components/CoreShell"
-import { useToast } from "@chakra-ui/core";
+import { Heading, Center, Stack, useToast } from "@chakra-ui/react";
 
-
-import { useAuth } from '@/lib/auth';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import { apifetch } from '@/utils/fetch';
 import useUser from '@/utils/hooks/useUser';
 import useShelf from "@/utils/hooks/useShelf"
+import BookCard from "@/components/BookCard";
+import FullSpinner from "@/components/FullSpinner";
 
 export default function Shelf() {
 
-    const { user } = useAuth();
     const router = useRouter();
     const { username, shelf } = router.query;
     const { data: id, error: userError } = useSWR(username ? `${apifetch}/user/${username}` : null, fetcher)
     const { user: data } = useUser(id);
     const { shelf: shelves, error: shelfError } = useShelf(data);
-    
+  
+
     const toast = useToast();
-    if (userError ) {
+    if (userError || shelfError) {
       toast({
         title: 'User or shelf not found!',
         status: 'error',
@@ -32,11 +32,28 @@ export default function Shelf() {
       }, 1000);
     }
 
+    if(!data || !shelves) {
+      return <FullSpinner />
+    }
+
     return (
-        <>
-            <CoreShell>
-                This is the shelf view
-            </CoreShell>
-        </>
-    )
+      <>
+        <CoreShell>
+          <Center mb={5}>
+            <Heading>@{username}'s Shelf</Heading>
+          </Center>
+          <Stack spacing={3}>
+            {shelves
+              ? shelves[shelf].map((i) => {
+                  return (
+                    <>
+                      <BookCard book={i} />
+                    </>
+                  );
+                })
+              : 'not working'}
+          </Stack>
+        </CoreShell>
+      </>
+    );
 }

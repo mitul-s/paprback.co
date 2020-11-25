@@ -1,4 +1,4 @@
-import { Box, Center, Text, Button, HStack } from "@chakra-ui/core"
+import { Box, Center, Text, Button, HStack } from "@chakra-ui/react"
 
 const ShareBox = () => {
     return (

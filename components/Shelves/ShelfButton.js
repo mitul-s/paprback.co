@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/core";
+import { Button } from "@chakra-ui/react";
 import { withAuthModal } from '@/components/Auth';
 import useShelfAction from '@/utils/hooks/useShelfAction';
 import { useAuth } from "@/lib/auth";

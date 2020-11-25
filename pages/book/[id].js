@@ -9,7 +9,7 @@ import FullSpinner from '@/components/FullSpinner';
 import { Cover, DetailBox, Titles, ShelfButtonsContainer } from "@/components/BookDetails"
 import s from "@/styles/Sidebar.module.css"
 
-import { Box, HStack } from "@chakra-ui/core";
+import { Box, Center, Flex, HStack } from "@chakra-ui/react";
 import ShareBox from "@/components/BookDetails/ShareBox";
 
 const BookDetail = () => {
@@ -60,26 +60,28 @@ const BookDetail = () => {
         <Head>
           <title>{book.title} // Paprback</title>
         </Head>
-        <CoreShell>
-          <Box className={s.withSidebar}>
+        <CoreShell maxW={['100%', null, '75%']}>
+          <Box className={s.withSidebar} mb={8}>
             <Box>
               <Box className={s.sidebar}>
                 <Cover img={book.img} title={book.title} />
-                <ShareBox />
               </Box>
               <Box className={s.notSidebar}>
-                <Titles
-                  title={book.title}
-                  subtitle={book.subtitle}
-                  authors={book.authors}
-                />
-                <HStack my={4} spacing={4}>
-                  <ShelfButtonsContainer book={data} />
-                </HStack>
-                <DetailBox desc={book.desc} detail={book.detail} />
+                <Flex h="100%" flexDirection="column" justifyContent="center">
+                  <Titles
+                    title={book.title}
+                    subtitle={book.subtitle}
+                    authors={book.authors}
+                  />
+                  <HStack my={4} spacing={4}>
+                    <ShelfButtonsContainer book={data} />
+                  </HStack>
+                </Flex>
               </Box>
             </Box>
           </Box>
+          <DetailBox desc={book.desc} detail={book.detail} />
+          <ShareBox />
         </CoreShell>
       </>
     );

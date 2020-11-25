@@ -15,7 +15,7 @@ import {
   Icon,
   Heading,
   useToast
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 
 import { useForm } from "react-hook-form";
@@ -86,6 +86,10 @@ const Signin = () => {
             id="password"
             type="password"
             ref={register({
+              minLength: {
+                value: 8,
+                message: 'Password must be at least 8 characters long'
+              },
               required: 'Please enter a password.'
             })}
           />

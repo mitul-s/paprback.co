@@ -11,18 +11,18 @@ import {
   FormLabel,
   FormErrorMessage,
   Stack,
-  Icon,
   Heading,
+  Text,
   Link,
   useToast
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import { useForm } from 'react-hook-form';
 
 const Signup = () => {
   const toast = useToast();
   const { handleSubmit, register, errors } = useForm();
-  const [loading, setLoading] = useState(false);
+  const [ loading, setLoading ] = useState(false);
   const { signup } = useAuth();
 
   const onSignup = (creds) => {
@@ -54,10 +54,12 @@ const Signup = () => {
         spacing={4}
         w="100%"
       >
-        <Flex justify="center">
-          <Box as="a" href="/" aria-label="Back to homepage">
-            {/* <Icon color="black" name="logo" size="64px" mb={4} /> */}
-            <Heading fontSize="lg">Paprback</Heading>
+        <Flex justifyContent="center" textAlign="center" mb={5}>
+          <Box as="a" aria-label="Back to homepage">
+            <NextLink href="/">
+              <Heading fontSize="lg">Paprback</Heading>
+            </NextLink>
+            <Text>Sign up and build your bookshelf</Text>
           </Box>
         </Flex>
         <FormControl isInvalid={errors.email && errors.email.message}>
@@ -106,7 +108,10 @@ const Signup = () => {
             id="password"
             type="password"
             ref={register({
-              minLength: 8,
+              minLength: {
+                value: 8,
+                message: 'Password must be at least 8 characters long'
+              },
               required: 'Please enter a password.'
             })}
           />

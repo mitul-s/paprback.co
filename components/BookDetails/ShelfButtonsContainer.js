@@ -4,7 +4,7 @@ import fetcher from "@/utils/fetcher"
 import { apifetch } from "@/utils/fetch";
 import { CurrentlyReading, MarkAsFinished, SaveForLater } from '@/components/Shelves/Buttons';
 import useShelf from "@/utils/hooks/useShelf";
-import { Spinner } from "@chakra-ui/core";
+import { Spinner } from "@chakra-ui/react";
 
 
 const ShelfButtonsContainer = ({ book }) => {
@@ -20,7 +20,7 @@ const ShelfButtonsContainer = ({ book }) => {
           <>
             <MarkAsFinished book={book} fromShelf="currently_reading" />
             <SaveForLater book={book} fromShelf="currently_reading" />
-            <p>Remove from shelf button to be added</p>
+            {/* <p>Remove from shelf button to be added</p> */}
           </>
         ); 
       } if (shelves.previously_read && shelves.previously_read.some((shelf) => shelf.id === book.id)) {
@@ -30,17 +30,9 @@ const ShelfButtonsContainer = ({ book }) => {
           <>
             <CurrentlyReading book={book} fromShelf="want_to_read" />
             <MarkAsFinished book={book} fromShelf="want_to_read" />
-            <p>Remove from shelf button to be added</p>
+            {/* <p>Remove from shelf button to be added</p> */}
           </>
         );
-      } if (shelves.currently_reading) {
-          return (
-              <>
-                <SaveForLater book={book} />
-                <CurrentlyReading book={book} />
-                <MarkAsFinished book={book} />
-              </>
-          )
       }
     }
 

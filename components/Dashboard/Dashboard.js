@@ -1,4 +1,4 @@
-import { Box, Center, Heading, Link, Grid, GridItem, Spinner, Skeleton } from "@chakra-ui/core"
+import { Box, Center, Heading, Image, Link, Text, Grid, GridItem, Spinner, Skeleton } from "@chakra-ui/react"
 import BookCard from "../BookCard"
 import DashCard from './DashCard';
 import { AuthHeader } from "./Header";
@@ -11,10 +11,22 @@ import { NakedButton } from "../Shelves/Buttons";
 
 const EmptyState = () => {
   return (
-    <Center rounded="xl" p={5} textAlign="center" bg="white" h="20vh">
-      You're not reading any books at the moment! Enjoy the break.
+    <Center
+      rounded="xl"
+      flexDirection="column"
+      p={5}
+      textAlign="center"
+      bg="white"
+      h="20vh"
+    >
+      <Text>You're not reading any books at the moment</Text>
+      <Image
+        boxSize="100px"
+        objectFit="cover"
+        src="/illustrations/floater.png"
+      />
     </Center>
-  )
+  );
 }
 
 const EmptyStateRL = ({ ...rest }) => {
@@ -66,11 +78,13 @@ const Dashboard = ({ user }) => {
                   <>
                     <BookCard portrait={true} book={s.cr[s.cr.length - 1]}>
                       <NakedButton
-                        mt={3}
+                        mt={5}
                         book={s.cr[s.cr.length - 1]}
                         shelf="previously_read"
                         text="Mark as complete"
                         fromShelf="currently_reading"
+                        rounded="full"
+                        // boxShadow="0px 8px 16px rgba(58,111,175,0.2)"
                       >
                         Mark as completed
                       </NakedButton>
@@ -94,7 +108,7 @@ const Dashboard = ({ user }) => {
             >
               <Heading fontSize="2xl">Up Next</Heading>
               {s.rl ? (
-                <NextLink href={`/user/${user.username}/shelves/want-to-read`}>
+                <NextLink href={`/user/${user.username}/shelves/want_to_read`}>
                   <Link w="max-content">Show all</Link>
                 </NextLink>
               ) : (

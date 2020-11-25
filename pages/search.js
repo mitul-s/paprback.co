@@ -1,7 +1,7 @@
 import CoreShell from "@/components/CoreShell";
 import BookCard from '@/components/BookCard';
 import FullSpinner from '@/components/FullSpinner';
-import { Box, Stack, Heading, SimpleGrid } from "@chakra-ui/core"
+import { Box, Stack, Heading, SimpleGrid } from "@chakra-ui/react"
 
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
