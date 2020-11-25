@@ -18,7 +18,8 @@ const UserDetails = ({ username, firstName, lastName, bio, img, location, birthd
         <Box>
           <Box rounded="full" w="max-content" mb={5} mt={-24} mx="auto">
             <Image
-              src={img}
+              src="../media/pp.png"
+              w="3xs"
               objectFit="cover"
               rounded="full"
               border="3px solid"

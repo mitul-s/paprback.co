@@ -39,10 +39,10 @@ export default function Shelf() {
     return (
       <>
         <CoreShell>
-          <Center>
+          <Center mb={5}>
             <Heading>@{username}'s Shelf</Heading>
           </Center>
-          <Stack>
+          <Stack spacing={3}>
             {shelves
               ? shelves[shelf].map((i) => {
                   return (
