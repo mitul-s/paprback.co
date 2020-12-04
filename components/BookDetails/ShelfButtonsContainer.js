@@ -11,11 +11,11 @@ const ShelfButtonsContainer = ({ book }) => {
 
     const { user } = useAuth();
     // const { shelves, isLoading } = useShelf(user);
-    const { data: shelves, isLoading } = useSWR(user ? `${apifetch}/${user.user_id}/shelves` : null, fetcher)
-
+    const { data: shelves, isLoading } = useSWR(user ? `${apifetch}/${user.user_id}/shelves` : null, fetcher);
 
     if (shelves) {
-      if (shelves.currently_reading && shelves.currently_reading.some((shelf) => shelf.id === book.id)) {
+      console.log(shelves);
+      if (shelves.currently_reading && shelves.currently_reading.books.some((shelf) => shelf.id === book.id)) {
         return (
           <>
             <MarkAsFinished book={book} fromShelf="currently_reading" />
@@ -23,9 +23,9 @@ const ShelfButtonsContainer = ({ book }) => {
             {/* <p>Remove from shelf button to be added</p> */}
           </>
         ); 
-      } if (shelves.previously_read && shelves.previously_read.some((shelf) => shelf.id === book.id)) {
+      } if (shelves.previously_read && shelves.previously_read.books.some((shelf) => shelf.id === book.id)) {
         return <h1>You've read this book</h1>
-     } if (shelves.want_to_read && shelves.want_to_read.some((shelf) => shelf.id === book.id)) {
+     } if (shelves.want_to_read && shelves.want_to_read.books.some((shelf) => shelf.id === book.id)) {
         return (
           <>
             <CurrentlyReading book={book} fromShelf="want_to_read" />

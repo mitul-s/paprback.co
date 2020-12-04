@@ -58,9 +58,9 @@ const Dashboard = ({ user }) => {
   let s = [];
   if (shelves) {
     s = {
-      cr: shelves.currently_reading,
-      rl: shelves.want_to_read,
-      pr: shelves.previously_read
+      cr: shelves.currently_reading ? shelves.currently_reading.books : '',
+      rl: shelves.want_to_read ? shelves.want_to_read.books : '',
+      pr: shelves.previously_read ? shelves.previously_read.books : '',
     };
   }
 

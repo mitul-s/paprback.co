@@ -46,7 +46,7 @@ const Featured = () => {
               .filter((book) => book !== undefined)
               .map((i) => {
                 return (
-                  <BookCard key={i.id} book={i} portrait={true} />
+                  <BookCard googlePull={true} key={i.id} book={i} portrait={true} />
                 );
               })
           ) : (
