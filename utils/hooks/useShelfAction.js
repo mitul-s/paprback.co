@@ -20,13 +20,12 @@ const useShelfAction = (user) => {
         }
       })
       .then(() => {
-        let x =
-          data[update.to_shelf] === undefined ? [] : data[update.to_shelf];
+        let x = data[update.to_shelf] === undefined ? [] : data[update.to_shelf].books;
         mutate(
           `${apifetch}/${user.user_id}/shelves`,
           {
             ...data,
-            [update.to_shelf]: x.concat(book),
+            [update.to_shelf.books]: x.concat(book),
             [fromShelf]: fromShelf
               ? data[fromShelf].filter((i) => i.id !== update.volume_id)
               : ''

@@ -51,12 +51,13 @@ const ShelfContainer = ({ id, shelfMap, listLength, heading, description, userna
                 <Skeleton h="15vh" />
               </Grid>
             ) : shelf && !isLoading && shelf[shelfMap] ? (
-              <Grid gap={4} gridTemplateColumns={["1fr", null,`repeat(${shelf[shelfMap].length <= 2 ? 1 : 3}, 1fr)`]}>
-              {shelf[shelfMap].slice(0, listLength).map((i) => {
+              <Grid gap={4} gridTemplateColumns={["1fr", null,`repeat(${shelf[shelfMap].books.length <= 2 ? 1 : 3}, 1fr)`]}>
+              {shelf[shelfMap].books.slice(0, listLength).map((i) => {
                 return (
                   <BookCard
                     book={i}
-                    portrait={shelf[shelfMap].length <= 2 ? false : true}
+                    googlePull={false}
+                    portrait={shelf[shelfMap].books.length <= 2 ? false : true}
                   />
                 );
               })}

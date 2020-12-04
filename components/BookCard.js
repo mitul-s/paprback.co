@@ -1,25 +1,43 @@
 import { Box, Image, Link, Text, Icon } from "@chakra-ui/react"
 import NextLink from "next/link"
 
-const BookCard = ({ book, portrait, children, ...rest }) => {
+const BookCard = ({ googlePull, book, portrait, children, ...rest }) => {
 
     const colors = ['red.100', 'orange.100', 'green.100', 'teal.100', 'blue.100', 'purple.100', 'pink.100']
     const color = colors[Math.floor(Math.random() * colors.length)];
 
+    let b = {};
+    if(googlePull) {
+      b = {
+        id: book.id,
+        title: book.volumeInfo.title,
+        subtitle: book.volumeInfo.subtitle,
+        authors: book.volumeInfo.authors ? book.volumeInfo.authors : '',
+        ratings: {
+          count: book.volumeInfo.ratingsCount,
+          avg: book.volumeInfo.averageRating
+        },
+        img: book.volumeInfo.imageLinks
+          ? book.volumeInfo.imageLinks.thumbnail.replace('http://', 'https://')
+          : ''
+      };
+    } else { 
+        b = {
+          id: book.volume_id,
+          title: book.title,
+          subtitle: book.subtitle,
+          authors: book.authors ? book.authors : '',
+          ratings: {
+            count: book.ratingsCount,
+            avg: book.averageRating
+          },
+          img: book.img
+        };
+    }
 
-    const b = {
-      id: book.id,
-      title: book.volumeInfo.title,
-      subtitle: book.volumeInfo.subtitle,
-      authors: book.volumeInfo.authors ? book.volumeInfo.authors : '',
-      ratings: {
-        count: book.volumeInfo.ratingsCount,
-        avg: book.volumeInfo.averageRating
-      },
-      img: book.volumeInfo.imageLinks
-        ? book.volumeInfo.imageLinks.thumbnail.replace('http://', 'https://')
-        : ''
-    };
+
+
+    
 
     return (
       <>

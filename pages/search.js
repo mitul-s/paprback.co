@@ -42,12 +42,7 @@ const Search = () => {
           <Heading size="md" mb={4} >Results for "{q}"</Heading>
           <SimpleGrid spacing={6} columns={[1, 1, 2]}>
             {data.items.map((book) => {
-              return (
-                <BookCard
-                  key={book.id}
-                  book={book}
-                />
-              );
+              return <BookCard googlePull={true} key={book.id} book={book} />;
             })}
           </SimpleGrid>
         </>

@@ -13,7 +13,17 @@ export const ShelfButton = ({ text, book, shelf, fromShelf, openAuthModal, ...re
       if (user) {
         let data = {
           op: 'upsert',
-          volume_id: book.id,
+          volume_data: { volume_id: book.id, ...book},
+          // volume_data: {
+          //   id: book.id,
+          //   title: book.title,
+          //   subtitle: book.subtitle,
+          //   authors: book.authors,
+          //   description: book.desc,
+          //   ratings: book.ratings,
+          //   img: book.img,
+          //   detail: book.detail,
+          // },
           to_shelf: shelf
         };
         addToShelf(data, book, fromShelf);

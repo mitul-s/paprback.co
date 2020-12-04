@@ -45,7 +45,7 @@ const BookDetail = () => {
             count: data.volumeInfo.ratingsCount,
             avg: data.volumeInfo.averageRating
           },
-          img: data.volumeInfo.imageLinks.small ? data.volumeInfo.imageLinks.small.replace('http://', 'https://') : '',
+          img: data.volumeInfo.imageLinks.thumbnail ? data.volumeInfo.imageLinks.thumbnail : '',
           detail: {
             pubDate: data.volumeInfo.publishedDate,
             pages: data.volumeInfo.pageCount,
@@ -74,7 +74,7 @@ const BookDetail = () => {
                     authors={book.authors}
                   />
                   <HStack my={4} spacing={4}>
-                    <ShelfButtonsContainer book={data} />
+                    <ShelfButtonsContainer book={book} />
                   </HStack>
                 </Flex>
               </Box>

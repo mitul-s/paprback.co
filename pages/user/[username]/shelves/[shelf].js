@@ -19,6 +19,8 @@ export default function Shelf() {
     const { shelf: shelves, error: shelfError } = useShelf(data);
   
 
+    console.log(shelves);
+
     const toast = useToast();
     if (userError || shelfError) {
       toast({
@@ -44,7 +46,7 @@ export default function Shelf() {
           </Center>
           <Stack spacing={3}>
             {shelves
-              ? shelves[shelf].map((i) => {
+              ? shelves[shelf].books.map((i) => {
                   return (
                     <>
                       <BookCard book={i} />
