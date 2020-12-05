@@ -14,7 +14,6 @@ const ShelfButtonsContainer = ({ book }) => {
     const { data: shelves, isLoading } = useSWR(user ? `${apifetch}/${user.user_id}/shelves` : null, fetcher);
 
     if (shelves) {
-      console.log(shelves);
       if (shelves.currently_reading && shelves.currently_reading.books.some((shelf) => shelf.id === book.id)) {
         return (
           <>

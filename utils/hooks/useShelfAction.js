@@ -9,7 +9,7 @@ const useShelfAction = (user) => {
     
   const [ loading, setLoading ] = useState(false);
   const toast = useToast();
-  const { data } = useSWR(`${apifetch}/${user.user_id}/shelves`, fetcher);
+  const { data = [] } = useSWR(`${apifetch}/${user.user_id}/shelves`, fetcher);
 
   const addToShelf = async (update, book, fromShelf) => {
     setLoading(true);
@@ -27,7 +27,7 @@ const useShelfAction = (user) => {
             ...data,
             [update.to_shelf.books]: x.concat(book),
             [fromShelf]: fromShelf
-              ? data[fromShelf].filter((i) => i.id !== update.volume_id)
+              ? data[fromShelf].books.filter((i) => i.id !== update.volume_id)
               : ''
           },
           false

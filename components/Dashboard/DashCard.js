@@ -27,17 +27,17 @@ const DashCard = ({ book, user, ...rest }) => {
       <>
         <Box bg="white" p={4} minHeight="20vh" minW="0" rounded="xl" {...rest}>
           <Stack>
-            <NextLink href={`/book/${book.id}`}>
+            <NextLink href={`/book/${book.volume_id}`}>
               <Heading
                 as="h2"
                 fontSize={['lg', 'xl']}
                 lineHeight={1.45}
                 isTruncated
               >
-                {book.volumeInfo.title}
+                {book.title}
               </Heading>
             </NextLink>
-            <Text>by {book.volumeInfo.authors}</Text>
+            <Text>by {book.authors}</Text>
             <NakedButton
               variant="link"
               text="Mark as reading"

@@ -9,8 +9,6 @@ export default function useShelf(user) {
         revalidateOnFocus: false,
         refreshWhenOffline: false,
         refreshWhenHidden: false,
-        refreshInterval: 0,
-        dedupingInterval: 1000000,
     });
 
     return {
