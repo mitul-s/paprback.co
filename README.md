@@ -18,7 +18,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Once you've started the development server, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-I've included the env variables in the `.env` file, they're public anyways. 
+I've included the env variables in the `.env` file, they're just public endpoints anyways.  
 
 ## Contributing
 
@@ -32,7 +32,17 @@ I've always wanted to push my development skills further, and complete a large p
 
 Goodreads has always been a pain point and I figured it would be the time to consider building something new. We got to the shelves part, but there's many nuances and UX cues that can be significantly improved.
 
-Overall, I'm super happy I finally completed a project and learned so much in a short time. Excited to keep building. 
+Overall, I'm super happy I finally completed a project and learned so much in a short time. Excited to keep building. Here's a quick list of the React concepts I learned through this project. 
+
+- Functional + Class Components, HOCs
+- Props vs State
+- Conditional Rendering
+- Hooks + Custom Hooks
+- Context
+- Error Boundaries
+- Compound Components
+- State Management, Routing, Styling, so much more.. 
+- I did not learn Testing yet
 
 ## Built With
 
@@ -45,6 +55,8 @@ As I was learning React, other than using the boilerplate `create-react-app` , I
 - [SWR by Vercel](https://swr.vercel.app/)
 - [React Hook Form](https://react-hook-form.com/)
     - At first, I built most form validation features myself to learn – but wow, I did not know how complex it is. To avoid redundancies, I enjoyed using `react-hook-form` as a library.
+
+The backend was built in Ruby by my friend PJ which you can checkout here 👉 [Paprback Backend](https://github.com/poujacques/bookclub-backend).
 
 ## Resources
 
