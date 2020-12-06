@@ -2,10 +2,10 @@ import { Box, Flex } from "@chakra-ui/react"
 import Navigation from "@/components/Navigation"
 import Footer from "@/components/Footer"
 
-const CoreShell = ({ children, ...rest }) => {
+const CoreShell = ({ query, children, ...rest }) => {
     return (
       <Box>
-        <Navigation />
+        <Navigation query={query} />
         <Box minH="100vh" maxW="1250px" margin="0 auto">
           <Flex
             margin="0 auto"

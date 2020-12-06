@@ -17,10 +17,10 @@ const SearchIcon = () => (
   </Icon>
 );
 
-const SearchBar = () => {
+const SearchBar = ({ query }) => {
 
     const push = (q) => router.push(`/search?q=${encodeURIComponent(q)}`);
-    const debounced = useCallback(_.debounce(q => push(q), 500), []);
+    const debounced = useCallback(_.debounce(q => push(q), 700), []);
     const handleChange = (e) => {debounced(e.target.value)}
 
     return (
@@ -32,7 +32,8 @@ const SearchBar = () => {
           />
           <Input 
             type="text" 
-            placeholder="Seach for a book..." 
+            placeholder="Search for a book..." 
+            defaultValue={query}
             onChange={(e) => handleChange(e)}
           />
         </InputGroup>

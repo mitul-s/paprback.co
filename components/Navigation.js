@@ -68,7 +68,7 @@ const GuestNav = (
     </>
 )
 
-const Navigation = () => {
+const Navigation = ({ query }) => {
   const { user, logout }  = useAuth();
   return (
     <>
@@ -102,7 +102,7 @@ const Navigation = () => {
             w="5xl"
             mx={{ base: '0', md: 10 }}
           >
-            <SearchBar />
+            <SearchBar query={query} />
           </Flex>
           <Flex justifyContent="center" alignItems="center" ml={[4, null, 0]}>
             {user ? <AuthNav logout={logout} user={user} /> : GuestNav}

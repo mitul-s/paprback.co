@@ -134,6 +134,7 @@ const Settings = () => {
                 <Input
                   defaultValue={data.last_name}
                   aria-label="last_name"
+                  placeholder="Everdeen"
                   name="last_name"
                   id="last_name"
                   ref={register({
@@ -153,6 +154,7 @@ const Settings = () => {
                   name="bio"
                   id="bio"
                   minH="5rem"
+                  placeholder="I volunteer as tribute!"
                   ref={register({
                     maxlength: 250
                   })}
@@ -170,6 +172,7 @@ const Settings = () => {
                   aria-label="location"
                   name="location"
                   id="location"
+                  placeholder="District 12"
                   ref={register({
                     maxlength: 250
                   })}

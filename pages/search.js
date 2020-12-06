@@ -36,7 +36,7 @@ const Search = () => {
     }
 
     return (
-      <CoreShell>
+      <CoreShell query={q}>
         <Box>
         {data.totalItems === 0 ? 'Nothing found' : (<>
           <Heading size="md" mb={4} >Results for "{q}"</Heading>
