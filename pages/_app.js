@@ -28,7 +28,6 @@ const GlobalStyle = ({ children }) => {
   );
 }
 
-
 const App = ({ Component, pageProps }) => {
   return (
     <>

@@ -18,6 +18,7 @@ class MyDocument extends Document {
           <ColorModeScript initialColorMode="light" />
           <Main />
           <NextScript />
+          <script src="/fullstory.js"></script>
         </body>
       </Html>
     );
