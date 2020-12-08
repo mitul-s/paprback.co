@@ -28,7 +28,7 @@ You can dive deeper into the Contributing file to learn more.
 
 ## Reflection
 
-I've always wanted to push my development skills further, and complete a large project with a group of friends. This project taught me a ton about building from scratch and the number of decisions necessary to make to ensure it's scalable. I made tons of mistakes, and learned tons. I'd love to take this project further, but I realized it's extremely complex to do as the sole front-end developer and also not necessarily worth the time. I'd like to continue learning, and there's a couple other projects I'd like to build.
+I've always wanted to push my development skills further, and complete a large project with a group of friends. This project taught me a ton about building from scratch and the number of decisions necessary to make to ensure it's scalable. We have a full Notion document filled with information on how we made product decisions and the offloading from design to frontend. I made tons of mistakes, and learned tons. As much as I'd love to take this project further, but I realized it's extremely complex to do as the sole front-end developer and also not necessarily worth the time. I'd like to continue learning, and there's a couple other projects I'd like to build.
 
 Goodreads has always been a pain point and I figured it would be the time to consider building something new. We got to the shelves part, but there's many nuances and UX cues that can be significantly improved.
 
