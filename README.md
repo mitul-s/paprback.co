@@ -28,13 +28,22 @@ You can dive deeper into the Contributing file to learn more.
 
 ## Reflection
 
-I've always wanted to push my development skills further, and complete a large project with a group of friends. This project taught me a ton about building from scratch and the number of decisions necessary to make to ensure it's scalable. We have a full Notion workspace filled with information on how we made product decisions and the offloading from design to frontend, building the gap between frontend and backend. 
+I’ve started countless projects that I never finished, so I wanted to commit to building something I could be passionate about and see an attainable end goal.
+I gathered my friends PJ, a backend developer and Stephen, a talented designer and we got to work by deciding on what the DB Schema should like, the user stories + flow, and how do we differentiate from Goodreads. This was all documented on our Notion workspace. 
 
-I made tons of mistakes, and learned tons. As much as I'd love to take this project further, but I realized it's extremely complex to do as the sole front-end developer and also not necessarily worth the time. I'd like to continue learning, and there's a couple other projects I'd like to build.
+###### A little on the why Paprback was the idea
+Anyone that has used Goodreads can tell you it’s a pain, and there’s not much on the internet for avid readers. There’s a big opportunity for designing communities for authors + readers to connect, as well as encouraging book discovery. 
 
-Goodreads has always been a pain point and I figured it would be the time to consider building something new. We got to the shelves part, but there's many nuances and UX cues that can be significantly improved.
+###### Challenges
+- I had no experience of building a backend, and it was initially difficult for me to communicate the goals with PJ
+- My React knowledge was extremely limited, and it meant learning + building at the same time 
+- We were essentially building from scratch with no guidance from experienced creators
+- It wasn’t until late we realized that our backend isn’t scalable, we were too dependant on the Google Books API and were being rate limited
+- Book don’t have any standardized ID’s, even ISBNs are inconsistent and APIs become super complex 
 
-Overall, I'm super happy I finally completed a project and learned so much in a short time. Excited to keep building. Here's a quick list of the React concepts I learned through this project. 
+I made countless mistakes, but also learned a lot. Though I did want to give up, I stuck to my goal and pushed through to ensure the project was functional to a minimum. As a sole front-end developer with limited guidance, it’s difficult to continue with it. I figured I’d move onto a couple other projects I’d like to built with the newfound knowledge, and continue learning. 
+
+Overall, I’m glad I finally completed a project and learned so much in a short time. I’m excited to keep building. Here's a quick list of the React concepts I learned through this project.
 
 - Functional + Class Components, HOCs
 - Props vs State
