@@ -21,7 +21,7 @@ export const MarkAsFinished = ({ ...rest }) => (
   <>
     <ShelfButton
       leftIcon={<Icon boxSize={4} mt="-2px" as={RiCheckDoubleLine} />}
-      text="Mark as finished"
+      text="Finished"
       // rounded="full"
       backgroundColor="green.100"
       color="green.500"
@@ -36,7 +36,7 @@ export const CurrentlyReading = ({ ...rest }) => (
   <>
     <ShelfButton
       leftIcon={<Icon boxSize={4} mt="-2px" as={RiPushpinLine} />}
-      text="Mark as reading"
+      text="Reading"
       // rounded="full"
       backgroundColor="purple.100"
       color="purple.500"
@@ -64,7 +64,7 @@ export const IconMarkFinished = ({ ...rest }) => (
   <>
     <ShelfButton
       leftIcon={<Icon boxSize={4} mt="-2px" as={RiPushpinLine} />}
-      text="Mark as reading"
+      text="Reading now"
       rounded="2xl"
       backgroundColor="pink.100"
       color="pink.600"

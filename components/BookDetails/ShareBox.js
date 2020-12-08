@@ -5,10 +5,10 @@ const ShareBox = () => {
       <>
         <Center bg="white" rounded="xl" my={4} p={5}>
           <HStack>
-            <Button colorScheme="facebook">
+            <Button colorScheme="facebook" disabled>
               Facebook
             </Button>
-            <Button colorScheme="twitter">
+            <Button colorScheme="twitter" disabled>
               Twitter
             </Button>
           </HStack>

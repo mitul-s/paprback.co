@@ -26,8 +26,7 @@ const Details = ({ detail }) => {
         </Heading>
         <HStack>
           <Text>{detail.pages} Pages /</Text>
-          <Text>Published in {detail.pubDate} /</Text>
-          <Text>Put something here mitul</Text>
+          <Text>Published in {detail.pubDate}</Text>
         </HStack>
       </Box>
     );
