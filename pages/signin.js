@@ -24,7 +24,7 @@ const Signin = () => {
 
   const toast = useToast();
   const { handleSubmit, register, errors } = useForm();
-  const [ loading, setLoading  ] = useState(false);
+  const [ loading, setLoading ] = useState(false);
   const { login } = useAuth();
 
   const onLogin = (creds) => {

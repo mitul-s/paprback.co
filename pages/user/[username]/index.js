@@ -1,10 +1,9 @@
-import { Box, Heading, Image, Spinner, Text, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import FullSpinner from "@/components/FullSpinner";
 import AuthProfile from "@/components/Profile/Auth/Profile"
 import GuestProfile from '@/components/Profile/Guest/Profile';
 
 import Head from 'next/head';
-
 
 import { useAuth } from '@/lib/auth'
 import { useRouter } from "next/router";
@@ -16,6 +15,7 @@ import { apifetch } from '@/utils/fetch';
 
 const User = () => {
     
+    // Check if user is auth
     const { user } = useAuth();
     const router = useRouter();
     let { username } = router.query;
@@ -39,6 +39,8 @@ const User = () => {
     }
 
     if(!data) return <FullSpinner />
+
+    // Return approriate profile view depending on auth status
 
     return (
       <>

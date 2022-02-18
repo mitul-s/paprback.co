@@ -1,7 +1,7 @@
-import React, { useCallback } from "react";
-import _ from "../node_modules/lodash";
-import router from "next/router";
-import { Icon, InputGroup, Input, InputLeftElement } from "@chakra-ui/react"
+import React, { useCallback } from 'react';
+import _ from '../node_modules/lodash';
+import router from 'next/router';
+import { Icon, InputGroup, Input, InputLeftElement } from '@chakra-ui/react';
 
 const SearchIcon = () => (
   <Icon>
@@ -18,27 +18,31 @@ const SearchIcon = () => (
 );
 
 const SearchBar = ({ query }) => {
+  const push = (q) => router.push(`/search?q=${encodeURIComponent(q)}`);
+  const debounced = useCallback(
+    _.debounce((q) => push(q), 700),
+    []
+  );
+  const handleChange = (e) => {
+    debounced(e.target.value);
+  };
 
-    const push = (q) => router.push(`/search?q=${encodeURIComponent(q)}`);
-    const debounced = useCallback(_.debounce(q => push(q), 700), []);
-    const handleChange = (e) => {debounced(e.target.value)}
-
-    return (
-      <>
-        <InputGroup>
-          <InputLeftElement
-            pointerEvents="none"
-            children={<SearchIcon color="gray.300" />}
-          />
-          <Input 
-            type="text" 
-            placeholder="Search for a book..." 
-            defaultValue={query}
-            onChange={(e) => handleChange(e)}
-          />
-        </InputGroup>
-      </>
-    );
-}
+  return (
+    <>
+      <InputGroup>
+        <InputLeftElement
+          pointerEvents="none"
+          children={<SearchIcon color="gray.300" />}
+        />
+        <Input
+          type="text"
+          placeholder="Search for a book..."
+          defaultValue={query}
+          onChange={(e) => handleChange(e)}
+        />
+      </InputGroup>
+    </>
+  );
+};
 
 export default SearchBar;

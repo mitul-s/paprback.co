@@ -1,7 +1,18 @@
-import React from "react";
-import NextLink from "next/link";
-import { Flex, Link, Avatar, Icon, Button, Menu, MenuList, MenuItem, MenuButton, MenuDivider } from "@chakra-ui/react";
-import SearchBar from "@/components/SearchBar";
+import React from 'react';
+import NextLink from 'next/link';
+import {
+  Flex,
+  Link,
+  Avatar,
+  Icon,
+  Button,
+  Menu,
+  MenuList,
+  MenuItem,
+  MenuButton,
+  MenuDivider
+} from '@chakra-ui/react';
+import SearchBar from '@/components/SearchBar';
 import { RiUser3Line, RiSettings2Line, RiHome2Line } from 'react-icons/ri';
 
 import { useAuth } from '@/lib/auth';
@@ -44,8 +55,7 @@ const AuthMenu = ({ user, logout }) => {
       </MenuList>
     </Menu>
   );
-} 
-
+};
 
 const AuthNav = ({ user, logout }) => (
   <>
@@ -54,22 +64,26 @@ const AuthNav = ({ user, logout }) => (
 );
 
 const GuestNav = (
-    <>
-        <NextLink href="/signin" passHref>
-            <Button variant="ghost" mr={2}>
-                Sign In
-            </Button>
-        </NextLink>
-        <NextLink href="/signup" passHref>
-            <Button bg="primary.indigo" color="whiteAlpha.900" border="2px solid transparent">
-                Sign Up
-            </Button>
-        </NextLink>
-    </>
-)
+  <>
+    <NextLink href="/signin" passHref>
+      <Button variant="ghost" mr={2}>
+        Sign In
+      </Button>
+    </NextLink>
+    <NextLink href="/signup" passHref>
+      <Button
+        bg="primary.indigo"
+        color="whiteAlpha.900"
+        border="2px solid transparent"
+      >
+        Sign Up
+      </Button>
+    </NextLink>
+  </>
+);
 
 const Navigation = ({ query }) => {
-  const { user, logout }  = useAuth();
+  const { user, logout } = useAuth();
   return (
     <>
       <Flex
