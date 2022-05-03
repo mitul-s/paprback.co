@@ -1,5 +1,9 @@
-import { Icon } from "@chakra-ui/react";
-import { RiBookmarkLine, RiPushpinLine, RiCheckDoubleLine } from 'react-icons/ri';
+import { Icon } from '@chakra-ui/react';
+import {
+  RiBookmarkLine,
+  RiPushpinLine,
+  RiCheckDoubleLine
+} from 'react-icons/ri';
 import ShelfButton from '@/components/Shelves/ShelfButton';
 
 export const SaveForLater = ({ ...rest }) => (
@@ -15,7 +19,6 @@ export const SaveForLater = ({ ...rest }) => (
     />
   </>
 );
-
 
 export const MarkAsFinished = ({ ...rest }) => (
   <>
@@ -47,18 +50,11 @@ export const CurrentlyReading = ({ ...rest }) => (
   </>
 );
 
-
 export const NakedButton = ({ text, ...rest }) => (
   <>
-    <ShelfButton
-      text={text}
-      {...rest}
-    />
+    <ShelfButton text={text} {...rest} />
   </>
-)
-
-
-
+);
 
 export const IconMarkFinished = ({ ...rest }) => (
   <>

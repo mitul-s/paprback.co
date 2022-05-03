@@ -4,7 +4,6 @@ import { apifetch } from '@/utils/fetch';
 
 export default function useShelf(user) {
     
-    // const { data: id } = useSWR(user ? `${apifetch}/user/${user.username}` : null, fetcher)
     const { data, error } = useSWR(user ? `${apifetch}/${user.user_id}/shelves` : null, fetcher, {
         revalidateOnFocus: false,
         refreshWhenOffline: false,

@@ -1,18 +1,23 @@
+// Helpers
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import fetcher from "@/utils/fetcher";
 import Head from "next/head"
 import { googlefetch } from '@/utils/fetch';
 
+// Internal Components
 import CoreShell from "@/components/CoreShell";
 import FullSpinner from '@/components/FullSpinner';
 import { Cover, DetailBox, Titles, ShelfButtonsContainer } from "@/components/BookDetails"
+import ShareBox from "@/components/BookDetails/ShareBox";
 import s from "@/styles/Sidebar.module.css"
 
-import { Box, Center, Flex, HStack } from "@chakra-ui/react";
-import ShareBox from "@/components/BookDetails/ShareBox";
+// External Components
+import { Box, Flex, HStack } from "@chakra-ui/react";
 
 const BookDetail = () => {
+
+    // Visit this page to find all details of a book
 
     const router = useRouter();
     const { id } = router.query;
@@ -20,10 +25,12 @@ const BookDetail = () => {
       revalidateOnFocus: false
     });
 
+    // If the data hasn't loaded yet, display a spinner
     if(!data) {
       return <FullSpinner />
     }
 
+    // If there's any errors, indicate as so
     if(error || data.error) {
       return (
         <CoreShell>
@@ -32,6 +39,7 @@ const BookDetail = () => {
       );
     }
     
+    // I assume there's better ways of data formatting, but it wasn't an immediate priority for me
     let book = {};
 
     if(data) {
@@ -61,6 +69,7 @@ const BookDetail = () => {
           <title>{book.title} // Paprback</title>
         </Head>
         <CoreShell maxW={['100%', null, '75%']}>
+        {/* I don't need the sidebar styling here, can be flexbox */}
           <Box className={s.withSidebar} mb={8}>
             <Box>
               <Box className={s.sidebar}>
@@ -80,6 +89,7 @@ const BookDetail = () => {
               </Box>
             </Box>
           </Box>
+
           <DetailBox desc={book.desc} detail={book.detail} />
           <ShareBox />
         </CoreShell>

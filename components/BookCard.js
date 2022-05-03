@@ -1,104 +1,108 @@
-import { Box, Image, Link, Text, Icon } from "@chakra-ui/react"
-import NextLink from "next/link"
+import { Box, Image, Link, Text, Icon } from '@chakra-ui/react';
+import NextLink from 'next/link';
 
 const BookCard = ({ googlePull, book, portrait, children, ...rest }) => {
+  const colors = [
+    'red.100',
+    'orange.100',
+    'green.100',
+    'teal.100',
+    'blue.100',
+    'purple.100',
+    'pink.100'
+  ];
+  const color = colors[Math.floor(Math.random() * colors.length)];
 
-    const colors = ['red.100', 'orange.100', 'green.100', 'teal.100', 'blue.100', 'purple.100', 'pink.100']
-    const color = colors[Math.floor(Math.random() * colors.length)];
+  let b = {};
+  if (googlePull) {
+    b = {
+      id: book.id,
+      title: book.volumeInfo.title,
+      subtitle: book.volumeInfo.subtitle,
+      authors: book.volumeInfo.authors ? book.volumeInfo.authors : '',
+      ratings: {
+        count: book.volumeInfo.ratingsCount,
+        avg: book.volumeInfo.averageRating
+      },
+      img: book.volumeInfo.imageLinks
+        ? book.volumeInfo.imageLinks.thumbnail.replace('http://', 'https://')
+        : ''
+    };
+  } else {
+    b = {
+      id: book.volume_id,
+      title: book.title,
+      subtitle: book.subtitle,
+      authors: book.authors ? book.authors : '',
+      ratings: {
+        count: book.ratingsCount,
+        avg: book.averageRating
+      },
+      img: book.img
+    };
+  }
 
-    let b = {};
-    if(googlePull) {
-      b = {
-        id: book.id,
-        title: book.volumeInfo.title,
-        subtitle: book.volumeInfo.subtitle,
-        authors: book.volumeInfo.authors ? book.volumeInfo.authors : '',
-        ratings: {
-          count: book.volumeInfo.ratingsCount,
-          avg: book.volumeInfo.averageRating
-        },
-        img: book.volumeInfo.imageLinks
-          ? book.volumeInfo.imageLinks.thumbnail.replace('http://', 'https://')
-          : ''
-      };
-    } else { 
-        b = {
-          id: book.volume_id,
-          title: book.title,
-          subtitle: book.subtitle,
-          authors: book.authors ? book.authors : '',
-          ratings: {
-            count: book.ratingsCount,
-            avg: book.averageRating
-          },
-          img: book.img
-        };
-    }
-
-
-
-    
-
-    return (
-      <>
+  return (
+    <>
+      <Box
+        rounded="md"
+        bg="white"
+        display={{ md: !portrait ? 'flex' : '' }}
+        {...rest}
+      >
         <Box
+          flexShrink="0"
+          bg={color}
+          p={4}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          minHeight={{ base: 250, md: 200 }}
+          // shadow="sm"
           rounded="md"
-          bg="white"
-          display={{ md: !portrait ? 'flex' : '' }}
-          {...rest}
         >
-          <Box
-            flexShrink="0"
-            bg={color}
-            p={4}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            minHeight={{ base: 250, md: 200 }}
-            // shadow="sm"
-            rounded="md"
-          >
-            <Image
-              width={{ md: portrait ? '' : 40 }}
-              height={{ md: 175 }}
-              objectFit="contain"
-              src={b.img}
-              alt="Woman paying for a purchase"
-              fallbackSrc={`https://via.placeholder.com/175x200?text=${b.title}`}
-            />
-          </Box>
-          <Box
-            mt={{ base: !portrait ? 2 : '', md: portrait ? 0 : 0 }}
-            ml={{ md: !portrait ? 6 : '' }}
-            display="flex"
-            justifyContent="center"
-            flexDirection="column"
-            p={4}
-            minWidth="0"
-            w="full"
-          >
-            {/* <NextLink href={`/book/${id}-${title.replace(/ /g, "-").replace(/[!,.:]/g, "")}`}> */}
-            <NextLink href={`/book/${b.id}`} passHref>
-              <Link
-                display="block"
-                fontSize="xl"
-                lineHeight="normal"
-                fontWeight="bold"
-                mt={{ md: portrait ? 0 : 3 }}
-              >
-                {b.title}
-                {portrait ? '' : b.subtitle ? `: ${b.subtitle}` : ''}
-              </Link>
-            </NextLink>
-            <Text mt={1} color="gray.600" fontSize="md">
-              {b.authors ? 'by' : ''}{' '}
-              {b.authors.length
-                ? b.authors.map((a, i) => (
-                    <span key={i}>{(i ? ', ' : '') + a}</span>
-                  ))
-                : ''}
-            </Text>
-            {b.ratings.count > 0 ? (<Text
+          <Image
+            width={{ md: portrait ? '' : 40 }}
+            height={{ md: 175 }}
+            objectFit="contain"
+            src={b.img}
+            alt="Woman paying for a purchase"
+            fallbackSrc={`https://via.placeholder.com/175x200?text=${b.title}`}
+          />
+        </Box>
+        <Box
+          mt={{ base: !portrait ? 2 : '', md: portrait ? 0 : 0 }}
+          ml={{ md: !portrait ? 6 : '' }}
+          display="flex"
+          justifyContent="center"
+          flexDirection="column"
+          p={4}
+          minWidth="0"
+          w="full"
+        >
+          {/* <NextLink href={`/book/${id}-${title.replace(/ /g, "-").replace(/[!,.:]/g, "")}`}> */}
+          <NextLink href={`/book/${b.id}`} passHref>
+            <Link
+              display="block"
+              fontSize="xl"
+              lineHeight="normal"
+              fontWeight="bold"
+              mt={{ md: portrait ? 0 : 3 }}
+            >
+              {b.title}
+              {portrait ? '' : b.subtitle ? `: ${b.subtitle}` : ''}
+            </Link>
+          </NextLink>
+          <Text mt={1} color="gray.600" fontSize="md">
+            {b.authors ? 'by' : ''}{' '}
+            {b.authors.length
+              ? b.authors.map((a, i) => (
+                  <span key={i}>{(i ? ', ' : '') + a}</span>
+                ))
+              : ''}
+          </Text>
+          {b.ratings.count > 0 ? (
+            <Text
               mt={2}
               color="gray.500"
               fontSize="sm"
@@ -120,12 +124,15 @@ const BookCard = ({ googlePull, book, portrait, children, ...rest }) => {
                 </svg>
               </Icon>
               {b.ratings.avg} ({b.ratings.count} Ratings)
-            </Text>) : ''}
-            {children}
-          </Box>
+            </Text>
+          ) : (
+            ''
+          )}
+          {children}
         </Box>
-      </>
-    );
-}
+      </Box>
+    </>
+  );
+};
 
 export default BookCard;

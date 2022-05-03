@@ -1,14 +1,20 @@
+// Components
 import CoreShell from "@/components/CoreShell"
+import BookCard from '@/components/BookCard';
+import FullSpinner from '@/components/FullSpinner';
+
 import { Heading, Center, Stack, useToast } from "@chakra-ui/react";
 
+// Helpers
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import { apifetch } from '@/utils/fetch';
+
+// Custom Hooks
 import useUser from '@/utils/hooks/useUser';
 import useShelf from "@/utils/hooks/useShelf"
-import BookCard from "@/components/BookCard";
-import FullSpinner from "@/components/FullSpinner";
+
 
 export default function Shelf() {
 
@@ -17,10 +23,8 @@ export default function Shelf() {
     const { data: id, error: userError } = useSWR(username ? `${apifetch}/user/${username}` : null, fetcher)
     const { user: data } = useUser(id);
     const { shelf: shelves, error: shelfError } = useShelf(data);
-  
 
-    console.log(shelves);
-
+    // Chakra provided toast if incorrect routing, and redirection 
     const toast = useToast();
     if (userError || shelfError) {
       toast({
