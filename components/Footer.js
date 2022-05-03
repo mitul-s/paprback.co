@@ -18,6 +18,13 @@ export default function Footer() {
             <Link href="https://twitter.com/typicalmitul" target="_blank">
               Mitul Shah
             </Link>{' '}
+            and{' '}
+            <Link
+              href="https://www.linkedin.com/in/philippe-montero-16537577/"
+              target="_blank"
+            >
+              Peej Montero
+            </Link>{' '}
             👋
           </Text>
         </Box>
